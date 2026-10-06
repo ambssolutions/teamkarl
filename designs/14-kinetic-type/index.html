@@ -1,0 +1,903 @@
+<!-- Concept 14: Kinetic — Interactive — light, type-led homepage where big headlines move: letter-by-letter entrances, scroll-driven word shifts, twin marquees, stacking cards and a tap-through sale tracker -->
+<!doctype html>
+<html lang="en-NZ" data-concept="14-kinetic-type">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Karl Vermeulen | Get your home sold faster | Harcourts Howick</title>
+<meta name="description" content="Team Karl Vermeulen, Harcourts Howick. Top 1% of Harcourts consultants internationally, 25+ years' experience and close to $845 million in property sales. Request a free home appraisal in Howick and East Auckland.">
+<meta property="og:title" content="Team Karl Vermeulen — Harcourts Howick">
+<meta property="og:description" content="Get your home sold faster with one of Howick's top real estate teams. Request a free home appraisal.">
+<meta property="og:image" content="https://teamkarl.vercel.app/assets/img/rangitoto-sunset.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* Motion is opt-in: only when GSAP + ScrollTrigger actually loaded and the visitor hasn't asked for reduced motion
+   do we add .kin (which lets the hero start hidden for its entrance). Otherwise the page renders in its final state. */
+(function(){
+  var H=document.documentElement;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(window.gsap&&window.ScrollTrigger&&!reduce){
+    H.classList.add('kin');
+    /* failsafe: if the init script never runs, show everything */
+    setTimeout(function(){if(!window.__kinOK)H.classList.remove('kin');},3000);
+  }
+})();
+</script>
+<style>
+:root{
+  --cyan:#00ADEF; --blue:#0077C8; --navy:#0B1F3A; --deep:#071428;
+  --g1:#F5F8FB; --g2:#E3EAF2; --g3:#5B6B80; --white:#fff;
+  --hdr:72px; --r:28px;
+  --display:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --stripe:repeating-linear-gradient(135deg,var(--navy) 0 14px,var(--cyan) 14px 30px,#fff 30px 33px,var(--cyan) 33px 49px);
+  --shadow:0 1px 2px rgba(11,31,58,.05),0 24px 48px -28px rgba(11,31,58,.28);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--hdr) + 16px);-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--display);background:#fff;color:var(--navy);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.05;letter-spacing:-.035em;font-weight:800}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-9999px;top:10px;z-index:200;background:var(--navy);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700}
+.skip:focus{left:12px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+a[href^="mailto"]{overflow-wrap:anywhere}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{content:"";width:28px;height:8px;border-radius:2px;background:var(--stripe);background-size:49px 49px}
+.h2{font-size:clamp(2.2rem,5.4vw,4.6rem)}
+.lede{font-size:clamp(1.05rem,1.4vw,1.2rem);color:#3E4F66;max-width:56ch}
+.sec{padding:clamp(72px,10vw,140px) 0;position:relative}
+.sec.grey{background:var(--g1)}
+.sec-head{display:grid;gap:18px;margin-bottom:clamp(36px,5vw,64px);max-width:900px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid var(--navy);background:var(--navy);color:#fff;font:800 1rem var(--display);letter-spacing:-.01em;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s;will-change:transform}
+.btn:hover{background:var(--blue);border-color:var(--blue)}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .3s}
+.btn:hover svg{transform:translateX(3px)}
+.btn.ghost{background:transparent;color:var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:#fff}
+.btn.cyan{background:var(--cyan);border-color:var(--cyan);color:var(--navy)}
+.btn.cyan:hover{background:#fff;border-color:#fff}
+.btn.white{background:#fff;border-color:#fff;color:var(--navy)}
+.btn.white:hover{background:var(--cyan);border-color:var(--cyan)}
+.tlink{color:var(--blue);font-weight:700;text-underline-offset:4px}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid rgba(227,234,242,.9)}
+.bar{height:var(--hdr);display:flex;align-items:center;gap:24px}
+.logo img{height:34px;width:auto}
+.nav{margin-left:auto}
+.nav ul{display:flex;gap:4px}
+.nav a{display:block;padding:10px 14px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .2s}
+.nav a:hover{background:var(--g1)}
+.tools{display:flex;align-items:center;gap:10px}
+.phone{display:inline-flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;padding:8px 10px;white-space:nowrap}
+.phone svg{width:18px;height:18px;color:var(--blue)}
+.tools .btn{min-height:44px;padding:0 20px;font-size:.92rem;white-space:nowrap}
+.menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:2px solid var(--g2);background:#fff;color:var(--navy);cursor:pointer;align-items:center;justify-content:center}
+.menu-btn svg{width:22px;height:22px}
+.prog{display:none;position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--cyan);transform-origin:left;transform:scaleX(0)}
+.kin .prog{display:block}
+@media (max-width:1080px){
+  .menu-btn{display:inline-flex}
+  .nav{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--g2);box-shadow:0 24px 40px -24px rgba(11,31,58,.25);display:none;margin:0}
+  .nav.open{display:block}
+  .nav ul{flex-direction:column;padding:10px clamp(16px,4vw,40px) 18px}
+  .nav a{padding:14px 12px;font-size:1.1rem;border-radius:12px}
+  .tools{margin-left:auto}
+}
+@media (max-width:640px){
+  .phone span{display:none}
+  .phone{width:44px;height:44px;justify-content:center;border:2px solid var(--g2);border-radius:50%;padding:0}
+  .tools .btn{padding:0 16px}
+  .logo img{height:28px}
+  .bar{gap:12px}
+}
+@media (max-width:370px){.tools .btn{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:clip;background:linear-gradient(180deg,#fff 0%,var(--g1) 100%)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--g2) 1px,transparent 1px),linear-gradient(90deg,var(--g2) 1px,transparent 1px);background-size:88px 88px;opacity:.45;-webkit-mask-image:radial-gradient(ellipse at 30% 40%,#000 0,transparent 70%);mask-image:radial-gradient(ellipse at 30% 40%,#000 0,transparent 70%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,56px);align-items:end;min-height:calc(100svh - var(--hdr) - 124px);padding-top:clamp(36px,6vh,72px)}
+.hero-copy{padding-bottom:clamp(40px,7vh,80px)}
+.kt{font-size:clamp(3.1rem,7.2vw,7.4rem);line-height:.93;letter-spacing:-.055em;margin:22px 0 28px}
+.kt .ln{display:block;padding:.04em 0 .1em;margin-bottom:-.1em}
+.kin .kt:not(.done) .ln{overflow:hidden}
+.kt .w{position:relative;display:inline-block;white-space:nowrap;margin-right:.1em}
+.kt .fi{display:inline-block}
+.kt .ch{display:inline-block;will-change:transform}
+.kt .gh{position:absolute;left:0;top:0;color:transparent;-webkit-text-stroke:2px var(--navy);opacity:0;pointer-events:none}
+.kt .hl{z-index:0}
+.kt .hl-bar{position:absolute;left:-.06em;right:-.06em;bottom:.04em;height:.36em;z-index:-1;border-radius:.06em;background:var(--cyan);transform-origin:left}
+.kin .kt-vis{opacity:0}
+.hero .lede{max-width:44ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-note{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-size:.92rem;color:var(--g3);font-weight:600}
+.hero-note a{color:var(--navy);font-weight:800;text-decoration:none;border-bottom:2px solid var(--cyan)}
+
+.visual{position:relative;height:min(72svh,640px);min-height:440px;align-self:end}
+.visual-in{position:absolute;inset:0}
+.panel{position:absolute;left:8%;right:2%;bottom:0;top:16%;border-radius:var(--r) var(--r) 0 0;background:var(--stripe);background-size:69px 69px;transform-origin:50% 100%;overflow:hidden}
+.panel::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 38%,rgba(255,255,255,.55),rgba(255,255,255,0) 70%)}
+.karl{position:absolute;bottom:0;left:50%;margin-left:-38%;width:76%;max-width:440px;aspect-ratio:500/622;overflow:hidden}
+.karl img{width:100%;height:auto}
+.chip{position:absolute;z-index:3}
+.chip-b{display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:20px;background:#fff;box-shadow:0 22px 44px -22px rgba(11,31,58,.45),0 0 0 1px rgba(11,31,58,.06);white-space:nowrap}
+.chip-b .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:var(--navy);color:var(--cyan);font-weight:800;font-size:.8rem}
+.chip-b .ic svg{width:22px;height:22px}
+.chip-b b{display:block;font-size:1.3rem;line-height:1.05;letter-spacing:-.03em}
+.chip-b small{display:block;color:var(--g3);font-size:.78rem;font-weight:700}
+.chip.c1{left:-6%;top:26%}
+.chip.c2{right:-3%;top:48%}
+.chip.c3{left:0;bottom:9%}
+@media (max-width:1100px) and (min-width:861px){.chip.c1{left:-12%}.chip.c3{left:-10%}}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;min-height:0;gap:0}
+  .hero-copy{padding-bottom:28px}
+  .visual{height:min(118vw,520px);min-height:0;width:100%;max-width:560px;margin:0 auto}
+  .chip.c1{left:0;top:18%}.chip.c2{right:0;top:44%}.chip.c3{left:2%;bottom:7%}
+}
+@media (max-width:480px){
+  .chip-b{padding:8px 12px 8px 8px;gap:9px;border-radius:16px}
+  .chip-b .ic{width:34px;height:34px;border-radius:11px}
+  .chip-b .ic svg{width:18px;height:18px}
+  .chip-b b{font-size:1.05rem}
+  .chip-b small{font-size:.7rem}
+  .ctas .btn{flex:1 1 auto}
+}
+
+/* ---------- marquees ---------- */
+.mqs{position:relative;z-index:2;overflow:clip;background:var(--g1);padding:6px 0 0}
+.mq{overflow:hidden;padding:16px 0}
+.mq-track{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0}
+.kin .mq-track{flex-wrap:nowrap;width:max-content;justify-content:flex-start;will-change:transform}
+.mq-g{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}
+.kin .mq-g{flex-wrap:nowrap}
+.mq-g span{display:inline-flex;align-items:center;white-space:nowrap}
+.mq-a{background:var(--navy);color:#fff;transform:rotate(-1.4deg) scale(1.03);margin:18px 0 -8px}
+.mq-a .mq-g span{font-size:clamp(1.5rem,3.2vw,2.6rem);font-weight:800;letter-spacing:-.03em;padding:0 22px}
+.mq-a .mq-g span:nth-child(even){color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.85)}
+.mq-a .mq-g span::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--cyan);margin-left:44px}
+.mq-b{background:var(--cyan);color:var(--navy);transform:rotate(1deg) scale(1.03);margin-bottom:6px}
+.mq-b .mq-g span{font-size:clamp(1rem,1.6vw,1.25rem);font-weight:800;padding:0 20px;text-transform:uppercase;letter-spacing:.06em}
+.mq-b .mq-g span::after{content:"";width:20px;height:8px;margin-left:40px;border-radius:2px;background:repeating-linear-gradient(135deg,var(--navy) 0 4px,transparent 4px 7px)}
+
+/* ---------- about ---------- */
+.say{font-size:clamp(1.7rem,3.8vw,3.3rem);line-height:1.12;letter-spacing:-.035em;font-weight:800;max-width:24ch}
+.say .sw2{display:inline}
+.about-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,90px);align-items:start;margin-top:clamp(40px,6vw,80px)}
+.photo{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.photo img{width:100%;aspect-ratio:1070/800;object-fit:cover}
+.photo .wipe{position:absolute;inset:0;background:var(--cyan);transform-origin:right;transform:scaleX(0)}
+.photo-tag{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:14px;padding:10px 14px;font-weight:800;font-size:.9rem;box-shadow:var(--shadow)}
+.about-txt{display:grid;gap:20px;color:#3E4F66}
+.about-txt strong{color:var(--navy)}
+.areas{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.areas li{padding:7px 14px;border-radius:999px;background:#fff;border:1.5px solid var(--g2);font-weight:700;font-size:.88rem;color:var(--navy)}
+.sec.grey .areas li{background:#fff}
+.mini-h{font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--navy);margin-top:clamp(56px,8vw,110px)}
+.num{padding:28px 24px 30px 0;border-bottom:1px solid var(--g2)}
+.num:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--g2)}
+.num .big{display:block;font-size:clamp(2.8rem,6vw,5.4rem);font-weight:800;letter-spacing:-.06em;line-height:1;font-variant-numeric:tabular-nums}
+.num .big .u{color:var(--blue)}
+.num .pre{display:block;font-size:.82rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);margin-bottom:8px}
+.num p{margin-top:10px;color:#3E4F66;font-size:.98rem;max-width:30ch}
+@media (max-width:860px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.num:not(:nth-child(3n+1)){padding-left:0;border-left:0}.num:nth-child(even){padding-left:18px;border-left:1px solid var(--g2)}}
+@media (max-width:480px){.nums{grid-template-columns:1fr}.num:nth-child(even){padding-left:0;border-left:0}}
+.award{display:inline-flex;align-items:center;gap:12px;margin-top:28px;padding:12px 18px;border-radius:16px;background:var(--navy);color:#fff;font-weight:700}
+.award svg{width:24px;height:24px;color:var(--cyan);flex:none}
+
+/* ---------- stacking cards ---------- */
+.stack{display:grid;gap:28px}
+.sc{position:relative}
+.sc-in{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);padding:clamp(28px,4vw,56px);border-radius:36px;box-shadow:0 30px 60px -36px rgba(11,31,58,.45);overflow:hidden;transform-origin:50% 0;will-change:transform}
+.sc .shade{position:absolute;inset:0;background:var(--deep);opacity:0;pointer-events:none;border-radius:inherit}
+.sc-sell .sc-in{background:var(--navy);color:#fff}
+.sc-buy .sc-in{background:#fff;color:var(--navy);border:1px solid var(--g2)}
+.sc-app .sc-in{background:var(--cyan);color:var(--navy)}
+.sc-num{font-size:.85rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.sc h3{font-size:clamp(2.2rem,4.6vw,4rem);margin:12px 0 18px}
+.sc-txt{display:flex;flex-direction:column}
+.sc-txt>p{font-size:1.08rem;max-width:46ch}
+.sc-sell .sc-txt>p{color:#C9D6E6}
+.sc-buy .sc-txt>p{color:#3E4F66}
+.pillars{display:grid;gap:12px;margin:26px 0 30px}
+.pillars li{display:flex;gap:14px;align-items:flex-start}
+.pillars b{display:block;font-size:1.05rem}
+.pillars small{display:block;font-size:.92rem;opacity:.85}
+.pillars i{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;margin-top:2px;font-style:normal;font-weight:800;font-size:.8rem}
+.sc-sell .pillars i{background:var(--cyan);color:var(--navy)}
+.sc-buy .pillars i{background:var(--navy);color:var(--cyan)}
+.sc-sell .pillars small{color:#C9D6E6;opacity:1}
+.sc-acts{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:auto}
+.sc-sell .tlink{color:#7FD6FF}
+.sc-app .tlink{color:var(--navy)}
+.sc-img{position:relative;border-radius:24px;overflow:hidden;min-height:280px}
+.sc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sc-app .sc-img::after{content:"";position:absolute;right:16px;top:16px;width:64px;height:64px;border-radius:16px;background:var(--stripe);background-size:49px 49px}
+@media (min-width:861px) and (min-height:700px){
+  .sc{position:sticky;top:calc(var(--hdr) + 24px + var(--i,0) * 18px)}
+  .sc-in{min-height:min(560px,calc(100vh - var(--hdr) - 120px))}
+  .stack{gap:6vh;padding-bottom:4vh}
+}
+@media (max-width:860px){.sc-in{grid-template-columns:1fr;border-radius:28px}.sc-img{min-height:220px;order:-1}}
+
+/* ---------- sale tracker ---------- */
+.trk{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,80px);align-items:center}
+.trk-card{background:#fff;border-radius:32px;padding:clamp(22px,3.4vw,40px);box-shadow:var(--shadow);border:1px solid var(--g2)}
+.trk-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.trk-day{font-size:clamp(3.6rem,8vw,6.6rem);font-weight:800;letter-spacing:-.06em;line-height:.9;font-variant-numeric:tabular-nums}
+.trk-day small{display:block;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);font-weight:800;margin-bottom:8px}
+.trk-day .n{display:inline-block;min-width:1.25em}
+.trk-play{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid var(--g2);background:#fff;color:var(--navy);font:800 .9rem var(--display);cursor:pointer}
+.trk-play:hover{border-color:var(--navy)}
+.trk-play svg{width:16px;height:16px}
+.meter{position:relative;height:10px;border-radius:999px;background:var(--g2);margin:30px 0 8px;overflow:hidden}
+.meter span{position:absolute;inset:0;border-radius:999px;background:var(--stripe);background-size:49px 49px;transform-origin:left;transform:scaleX(1);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:18px}
+.day{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 12px 14px;border-radius:16px;border:2px solid var(--g2);background:var(--g1);color:var(--navy);font:inherit;text-align:left;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+.day:hover{border-color:var(--blue)}
+.day .d{font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.day .t{font-size:.95rem;font-weight:800;line-height:1.2}
+.day.on{background:#fff;border-color:var(--cyan)}
+.day[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.day[aria-pressed="true"] .d{color:var(--cyan)}
+.trk-detail{margin-top:22px;min-height:7.2em}
+.trk-detail h3{font-size:1.5rem;letter-spacing:-.02em}
+.trk-detail p{margin-top:8px;color:#3E4F66}
+.trk-quote{margin:0;padding:clamp(24px,3vw,36px);border-radius:28px;background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.trk-quote::before{content:"";position:absolute;right:-50px;bottom:-50px;width:120px;height:120px;border-radius:30px;background:var(--stripe);background-size:49px 49px;transform:rotate(12deg);opacity:.9}
+.trk-quote blockquote{margin:0;position:relative;font-size:clamp(1.25rem,2vw,1.6rem);font-weight:700;line-height:1.35;letter-spacing:-.02em;max-width:30ch}
+.trk-quote mark{background:none;color:var(--cyan)}
+.trk-quote figcaption{position:relative;padding-right:64px;margin-top:18px;color:#C9D6E6;font-size:.95rem}
+.trk-quote figcaption b{color:#fff}
+.trk-side{display:grid;gap:22px}
+.trk-side .note{font-size:.9rem;color:var(--g3)}
+@media (max-width:960px){.trk{grid-template-columns:1fr}}
+@media (max-width:480px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}.trk-detail{min-height:9.5em}}
+
+/* ---------- team ---------- */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.tm{position:relative;overflow:hidden;border-radius:28px;background:#fff;border:1px solid var(--g2);padding:28px;display:flex;flex-direction:column;align-items:flex-start;transform-style:preserve-3d}
+.tm .glow{position:absolute;left:0;top:0;width:360px;height:360px;margin:-180px 0 0 -180px;border-radius:50%;background:radial-gradient(circle,rgba(0,173,239,.28),rgba(0,173,239,0) 65%);opacity:0;transition:opacity .35s;pointer-events:none}
+.tm:hover .glow{opacity:1}
+.tm img{position:relative;width:132px;height:132px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 6px #fff,0 0 0 8px var(--g2)}
+.tm h3{position:relative;font-size:1.45rem;letter-spacing:-.025em;margin-top:22px}
+.tm .role{position:relative;color:var(--blue);font-weight:700;font-size:.92rem;margin-top:4px}
+.tm .ct{position:relative;display:grid;gap:4px;margin-top:16px;font-size:.92rem;font-weight:600}
+.tm .ct a{text-decoration:none;color:#3E4F66}
+.tm .ct a:hover{color:var(--navy);text-decoration:underline}
+.tm.lead{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tm.lead .role{color:var(--cyan)}
+.tm.lead .ct a{color:#C9D6E6}
+.tm.lead .ct a:hover{color:#fff}
+.tm.lead img{box-shadow:0 0 0 6px var(--navy),0 0 0 8px var(--cyan)}
+@media (max-width:960px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.team{grid-template-columns:1fr}.tm{flex-direction:row;flex-wrap:wrap;align-items:center;gap:0 18px;padding:20px}.tm img{width:88px;height:88px}.tm .who{flex:1;min-width:0}.tm h3{margin-top:0;font-size:1.25rem}.tm .ct{flex-basis:100%}}
+
+/* ---------- reviews ---------- */
+.rv-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.rv-ctrl{display:flex;gap:10px;align-items:center}
+.rv-ctrl button{width:52px;height:52px;border-radius:50%;border:2px solid var(--navy);background:#fff;color:var(--navy);cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s}
+.rv-ctrl button:hover{background:var(--navy);color:#fff}
+.rv-ctrl button:disabled{opacity:.35;cursor:default;background:#fff;color:var(--navy)}
+.rv-ctrl svg{width:20px;height:20px}
+.rv-hint{font-size:.85rem;font-weight:700;color:var(--g3);margin-right:8px}
+.strip{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:clamp(16px,4vw,40px);padding:8px clamp(16px,4vw,40px) 28px;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain}
+.strip::-webkit-scrollbar{display:none}
+.strip.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.strip:focus-visible{outline-offset:-3px;border-radius:0}
+@media (min-width:1400px){.strip{padding-left:calc((100vw - 1320px)/2 + 40px);scroll-padding-left:calc((100vw - 1320px)/2 + 40px)}}
+.rv{flex:0 0 min(420px,84vw);scroll-snap-align:start;display:flex;flex-direction:column;margin:0;padding:30px;border-radius:28px;background:#fff;border:1px solid var(--g2);box-shadow:0 18px 40px -30px rgba(11,31,58,.4)}
+.rv:nth-child(3n+2){background:var(--navy);color:#fff;border-color:var(--navy)}
+.rv:nth-child(3n+2) figcaption small{color:#C9D6E6}
+.rv .qm{width:44px;height:36px;color:var(--cyan)}
+.rv blockquote{margin:18px 0 26px;font-size:1.12rem;font-weight:600;line-height:1.5;letter-spacing:-.01em}
+.rv figcaption{margin-top:auto;padding-top:18px;border-top:1px solid rgba(91,107,128,.25)}
+.rv figcaption b{display:block}
+.rv figcaption small{display:block;color:var(--g3);font-size:.88rem}
+.rv-meter{height:4px;border-radius:4px;background:var(--g2);overflow:hidden;margin:0 auto}
+.rv-meter span{display:block;height:100%;background:var(--navy);transform-origin:left;transform:scaleX(.2)}
+
+/* ---------- contact / form ---------- */
+.contact{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(32px,6vw,90px);align-items:start}
+.c-list{display:grid;gap:14px;margin-top:32px}
+.c-list a,.c-list span{display:flex;align-items:center;gap:14px;font-weight:700;text-decoration:none;min-width:0}
+.c-list i{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--g1);color:var(--blue)}
+.c-list i svg{width:20px;height:20px}
+.c-list a:hover{color:var(--blue)}
+.form{background:var(--g1);border-radius:32px;padding:clamp(22px,3.4vw,40px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form .full{grid-column:1/-1}
+.form label{display:block;font-weight:800;font-size:.9rem;margin-bottom:6px}
+.form label small{font-weight:600;color:var(--g3)}
+.form input,.form textarea{width:100%;min-height:52px;padding:12px 16px;border-radius:14px;border:2px solid var(--g2);background:#fff;color:var(--navy);font:500 1rem var(--display);transition:border-color .2s}
+.form textarea{min-height:120px;resize:vertical}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,119,200,.15)}
+.form .note{font-size:.88rem;color:var(--g3)}
+.form .btn{width:100%}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+@media (max-width:520px){.form{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.foot{background:var(--deep);color:#C9D6E6;padding:clamp(60px,8vw,100px) 0 110px;overflow:clip}
+.foot-big{font-size:clamp(2.6rem,9vw,8.6rem);font-weight:800;letter-spacing:-.06em;line-height:.95;color:#fff;margin-bottom:clamp(40px,6vw,72px)}
+.foot-big span{display:block;white-space:nowrap}
+.foot-big span+span{color:var(--cyan)}
+.f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;padding-top:36px;border-top:1px solid rgba(255,255,255,.14)}
+.f-grid>*{min-width:0}
+.f-grid h2{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.f-grid a{color:#fff;text-decoration:none}
+.f-grid a:hover{text-decoration:underline}
+.f-grid p{margin-bottom:6px}
+.f-logo{height:40px;width:auto;margin-bottom:18px}
+.hc{display:inline-block;background:#fff;border-radius:10px;padding:10px 14px;margin-top:10px}
+.hc img{width:210px;height:auto}
+.f-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:40px;font-size:.85rem;color:#9FB3CC}
+.f-base a{color:#9FB3CC}
+@media (max-width:860px){.f-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Team Karl Vermeulen, Harcourts Howick — back to top"><img src="../../assets/img/logo-navy-800.webp" srcset="../../assets/img/logo-navy-400.webp 400w, ../../assets/img/logo-navy-800.webp 800w" sizes="179px" alt="TEAM K" width="800" height="153"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#sell">Sell</a></li>
+        <li><a href="#buy">Buy</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <a class="phone" href="tel:+64272044249" aria-label="Call Karl on 027 204 4249"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>027 204 4249</span></a>
+      <a class="btn mag" href="#contact">Free appraisal</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+  </div>
+  <span class="prog" aria-hidden="true"></span>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-intro>Harcourts Howick · East Auckland</span>
+        <h1 class="kt" id="hero-h">
+          <span class="sr">Get your home sold faster.</span>
+          <span class="kt-vis" aria-hidden="true">
+            <span class="ln"><span class="w" data-shift="-5" data-ghost>Get</span> <span class="w" data-shift="4">your</span></span>
+            <span class="ln"><span class="w" data-shift="7" data-ghost>home</span> <span class="w hl" data-shift="-3"><span class="hl-bar"></span>sold</span></span>
+            <span class="ln"><span class="w hl" data-shift="-8"><span class="hl-bar"></span>faster.</span></span>
+          </span>
+        </h1>
+        <p class="lede" data-intro>Work with one of Howick's top real estate agents. Karl Vermeulen and his team bring 25+ years of local experience — and close to $845 million in property sales — to the sale of your home.</p>
+        <div class="ctas" data-intro>
+          <a class="btn mag" href="#contact">Book a free appraisal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn ghost mag" href="https://harcourts.net/nz/office/howick/listings/buy?team-member=karl-vermeulen" target="_blank" rel="noopener">View current listings</a>
+        </div>
+        <p class="hero-note" data-intro><span>Prefer to talk? <a href="tel:+64272044249">027 204 4249</a></span><span>18 Fencible Drive, Howick</span></p>
+      </div>
+      <div class="visual" aria-hidden="false">
+        <div class="visual-in">
+          <div class="panel" data-intro></div>
+          <div class="karl" data-intro><img src="../../assets/img/karl-cutout-500.webp" srcset="../../assets/img/karl-cutout-320.webp 320w, ../../assets/img/karl-cutout-500.webp 500w" sizes="(max-width: 600px) 70vw, (max-width: 1100px) 52vw, 360px" alt="Karl Vermeulen in a suit and Harcourts striped tie" width="500" height="667" fetchpriority="high"></div>
+          <div class="chip c1"><div class="chip-b" data-intro><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/><path d="M8.2 13.9 7 22l5-3 5 3-1.2-8.1"/></svg></span><span><b>Top 1%</b><small>Harcourts internationally</small></span></div></div>
+          <div class="chip c2"><div class="chip-b" data-intro><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span><b>$845M</b><small>in property sales</small></span></div></div>
+          <div class="chip c3"><div class="chip-b" data-intro><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b>25+ yrs</b><small>local experience</small></span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWIN MARQUEES (decorative; the same suburbs and credentials appear as text below) -->
+  <div class="mqs" aria-hidden="true">
+    <div class="mq mq-a"><div class="mq-track" data-dir="-1"><div class="mq-g"><span>Howick</span><span>Cockle Bay</span><span>Mellons Bay</span><span>Bucklands Beach</span><span>Eastern Beach</span><span>Somerville</span><span>Northpark</span><span>Pakuranga Heights</span><span>Botany Downs</span><span>Half Moon Bay</span><span>Whitford</span></div></div></div>
+    <div class="mq mq-b"><div class="mq-track" data-dir="1"><div class="mq-g"><span>Top 1% of Harcourts consultants internationally</span><span>Top 5 Harcourts agents in NZ</span><span>25+ years of experience</span><span>Close to $845 million in sales</span><span>4,000+ delighted clients</span><span>70+ years combined team experience</span></div></div></div>
+  </div>
+
+  <!-- ABOUT + NUMBERS -->
+  <section class="sec" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <span class="eyebrow">About Karl</span>
+      <h2 class="sr" id="about-h">About Karl Vermeulen</h2>
+      <p class="say" style="margin-top:22px">Proudly born and raised in the Eastern Beaches, Karl is your trusted Howick-based real estate expert.</p>
+      <div class="about-grid">
+        <div class="photo" data-rv>
+          <img src="../../assets/img/karl-howick-800.webp" srcset="../../assets/img/karl-howick-480.webp 480w, ../../assets/img/karl-howick-800.webp 800w, ../../assets/img/karl-howick-1070.webp 1070w" sizes="(max-width: 600px) 92vw, (max-width: 1100px) 92vw, 519px" alt="Karl Vermeulen standing outdoors with Howick in the background" width="1070" height="800" loading="lazy" decoding="async">
+          <span class="wipe" aria-hidden="true"></span>
+          <span class="photo-tag">Karl Vermeulen · Team Leader</span>
+        </div>
+        <div class="about-txt">
+          <p data-rv>His devotion to real estate has resulted in <strong>over 25 years of experience</strong>, and <strong>close to $845 million in property sales</strong>. Tap into Karl's local expertise and strong connections in Howick and East Auckland.</p>
+          <p data-rv>As one of Harcourts' leading global agents, Karl stands out for his stellar track record and dedicated customer base.</p>
+          <p data-rv>Away from work, Karl lives on a Whitford lifestyle block with his family and dozens of rescue animals, among 20,000 predominantly native trees. He loves New Zealand's surf spots and travelling Europe and Asia.</p>
+          <div data-rv>
+            <p class="mini-h">Areas we serve</p>
+            <ul class="areas" aria-label="Suburbs served">
+              <li>Howick</li><li>Cockle Bay</li><li>Mellons Bay</li><li>Bucklands Beach</li><li>Eastern Beach</li><li>Somerville</li><li>Northpark</li><li>Pakuranga Heights</li><li>Botany Downs</li><li>Half Moon Bay</li><li>Whitford</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="h2" data-split style="margin-top:clamp(72px,10vw,140px)" id="results">A track record built locally.</h2>
+      <div class="nums">
+        <div class="num" data-rv><span class="pre">Harcourts internationally</span><span class="big">Top <span data-count="1">1</span><span class="u">%</span></span><p>of Harcourts consultants worldwide — for almost 20 years running.</p></div>
+        <div class="num" data-rv><span class="pre">New Zealand</span><span class="big">Top <span data-count="5">5</span></span><p>Harcourts agents in New Zealand — 5th year in a row.</p></div>
+        <div class="num" data-rv><span class="pre">Close to</span><span class="big"><span class="u">$</span><span data-count="845">845</span><span class="u">M</span></span><p>in property sales across Howick and East Auckland.</p></div>
+        <div class="num" data-rv><span class="pre">Experience</span><span class="big"><span data-count="25">25</span><span class="u">+</span></span><p>years in real estate, all of it local.</p></div>
+        <div class="num" data-rv><span class="pre">Clients</span><span class="big"><span data-count="4000" data-sep>4,000</span><span class="u">+</span></span><p>delighted clients — buyers and sellers.</p></div>
+        <div class="num" data-rv><span class="pre">The team</span><span class="big"><span data-count="70">70</span><span class="u">+</span></span><p>years of combined East Auckland experience.</p></div>
+      </div>
+      <p class="award" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Awards include Top Harcourts Consultant in Howick</p>
+    </div>
+  </section>
+
+  <!-- STACKING CARDS: SELL / BUY / APPRAISAL -->
+  <section class="sec grey" aria-labelledby="help-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">How we can help</span>
+        <h2 class="h2" id="help-h" data-split>Selling, buying, or just curious.</h2>
+      </div>
+      <div class="stack">
+        <article class="sc sc-sell" id="sell" style="--i:0" aria-labelledby="sell-h">
+          <div class="sc-in">
+            <div class="sc-txt">
+              <span class="sc-num">01 — Selling</span>
+              <h3 id="sell-h">Sell with confidence.</h3>
+              <p>Saying goodbye to a family home or parting ways with an investment property doesn't have to be daunting; it can be an opportunity for financial growth and new beginnings.</p>
+              <ul class="pillars">
+                <li><i aria-hidden="true">1</i><span><b>Expertise that matters</b><small>70+ years of combined East Auckland experience.</small></span></li>
+                <li><i aria-hidden="true">2</i><span><b>Tailored solutions</b><small>A plan built around your home and your timing.</small></span></li>
+                <li><i aria-hidden="true">3</i><span><b>Transparent &amp; trustworthy</b><small>Straight answers and regular updates throughout.</small></span></li>
+              </ul>
+              <div class="sc-acts">
+                <a class="btn cyan mag" href="#contact">Get a free appraisal</a>
+                <a class="tlink" href="https://one.harcourts.co.nz/images/Products/571cbf73-f8c6-4745-b743-05f016867ae4/files/Harcourts%20Selling%20Guide.pdf" target="_blank" rel="noopener">Harcourts Selling Guide</a>
+                <a class="tlink" href="https://www.settled.govt.nz/" target="_blank" rel="noopener">settled.govt.nz</a>
+              </div>
+            </div>
+            <div class="sc-img"><img src="../../assets/img/home-dusk-800.webp" srcset="../../assets/img/home-dusk-480.webp 480w, ../../assets/img/home-dusk-800.webp 800w, ../../assets/img/home-dusk-933.webp 933w" sizes="(max-width: 600px) 78vw, (max-width: 1100px) 85vw, 509px" alt="Weatherboard home at dusk with its lights on" width="933" height="414" loading="lazy" decoding="async"></div>
+            <span class="shade" aria-hidden="true"></span>
+          </div>
+        </article>
+        <article class="sc sc-buy" id="buy" style="--i:1" aria-labelledby="buy-h">
+          <div class="sc-in">
+            <div class="sc-txt">
+              <span class="sc-num">02 — Buying</span>
+              <h3 id="buy-h">Buy with an expert beside you.</h3>
+              <p>Navigating the world of buying your first or next property? Congratulations! Let's get you armed with some expert advice.</p>
+              <ul class="pillars">
+                <li><i aria-hidden="true">1</i><span><b>Local expertise</b><small>Born-and-raised knowledge of the Eastern Beaches.</small></span></li>
+                <li><i aria-hidden="true">2</i><span><b>Personalised support</b><small>Advice that fits your budget and your plans.</small></span></li>
+                <li><i aria-hidden="true">3</i><span><b>Smooth transactions</b><small>From first viewing to settlement day.</small></span></li>
+              </ul>
+              <div class="sc-acts">
+                <a class="btn mag" href="https://harcourts.net/nz/office/howick/listings/buy?team-member=karl-vermeulen" target="_blank" rel="noopener">View current listings</a>
+                <a class="tlink" href="https://www.settled.govt.nz/" target="_blank" rel="noopener">settled.govt.nz</a>
+              </div>
+            </div>
+            <div class="sc-img"><img src="../../assets/img/living-room-800.webp" srcset="../../assets/img/living-room-480.webp 480w, ../../assets/img/living-room-800.webp 800w, ../../assets/img/living-room-1200.webp 1200w" sizes="(max-width: 600px) 77vw, (max-width: 1100px) 84vw, 508px" alt="Bright living room with a leather sofa and wooden floors" width="1200" height="801" loading="lazy" decoding="async"></div>
+            <span class="shade" aria-hidden="true"></span>
+          </div>
+        </article>
+        <article class="sc sc-app" style="--i:2" aria-labelledby="app-h">
+          <div class="sc-in">
+            <div class="sc-txt">
+              <span class="sc-num">03 — Free appraisal</span>
+              <h3 id="app-h">Curious about your home's worth?</h3>
+              <p>Request a free home appraisal today — no strings attached, just expert guidance tailored to you. We'll be in touch within 48 hours.</p>
+              <div class="sc-acts" style="margin-top:30px">
+                <a class="btn mag" href="#contact">Request my free appraisal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="tlink" href="tel:+64272044249">or call 027 204 4249</a>
+              </div>
+            </div>
+            <div class="sc-img"><img src="../../assets/img/home-exterior-800.webp" srcset="../../assets/img/home-exterior-480.webp 480w, ../../assets/img/home-exterior-800.webp 800w, ../../assets/img/home-exterior-1200.webp 1200w" sizes="(max-width: 600px) 78vw, (max-width: 1100px) 85vw, 509px" alt="Exterior of a family home" width="1200" height="801" loading="lazy" decoding="async"></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALE TRACKER -->
+  <section class="sec" id="tracker" aria-labelledby="trk-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">A recent sale, start to finish</span>
+        <h2 class="h2" id="trk-h" data-split>Listed on day one. Sold on day ten.</h2>
+        <p class="lede">An example Team K campaign. Tap any day to see what happens at each stage.</p>
+      </div>
+      <div class="trk">
+        <div class="trk-card">
+          <div class="trk-top">
+            <p class="trk-day"><small>Campaign timeline</small>Day <span class="n" id="trk-n">10</span></p>
+            <button class="trk-play" type="button" id="trk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Replay</button>
+          </div>
+          <div class="meter" aria-hidden="true"><span id="trk-fill"></span></div>
+          <div class="days" role="group" aria-label="Choose a day in the campaign">
+            <button class="day on" type="button" aria-pressed="false" data-i="0"><span class="d">Day 1</span><span class="t">Listed &amp; marketed</span></button>
+            <button class="day on" type="button" aria-pressed="false" data-i="1"><span class="d">Day 4</span><span class="t">Open home</span></button>
+            <button class="day on" type="button" aria-pressed="false" data-i="2"><span class="d">Day 8</span><span class="t">Offer</span></button>
+            <button class="day on" type="button" aria-pressed="true" data-i="3"><span class="d">Day 10</span><span class="t">Sold</span></button>
+          </div>
+          <div class="trk-detail" aria-live="polite">
+            <h3 id="trk-t">Sold</h3>
+            <p id="trk-p">Sold, and on your timeline. The paperwork is in order, so you can plan your next move with confidence.</p>
+          </div>
+        </div>
+        <div class="trk-side">
+          <figure class="trk-quote">
+            <blockquote>“I had my buyer <mark>within 10 days</mark> with the exposure Karl gave the property. He dotted all the i's and crossed all the t's when it came to the contract. When I sell again, I will certainly be giving Karl a call.”</blockquote>
+            <figcaption><b>Mrs Ferguson</b> · Somerville Road, Somerville</figcaption>
+          </figure>
+          <p class="note">Every home and market is different — Karl will give you an honest view of likely timing for yours at your free appraisal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec grey" id="team" aria-labelledby="team-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Meet Team K</span>
+        <h2 class="h2" id="team-h" data-split>70+ years of experience on your side.</h2>
+      </div>
+      <ul class="team">
+        <li class="tm lead" data-tilt><span class="glow" aria-hidden="true"></span><img src="../../assets/team/karl-480.webp" srcset="../../assets/team/karl-160.webp 160w, ../../assets/team/karl-320.webp 320w, ../../assets/team/karl-480.webp 480w" sizes="132px" alt="Karl Vermeulen" width="480" height="480" loading="lazy" decoding="async"><div class="who"><h3>Karl Vermeulen</h3><p class="role">Sales Consultant &amp; Team Leader</p></div><p class="ct"><a href="tel:+64272044249">027 204 4249</a><a href="mailto:karl.vermeulen@harcourts.co.nz">karl.vermeulen@harcourts.co.nz</a></p></li>
+        <li class="tm" data-tilt><span class="glow" aria-hidden="true"></span><img src="../../assets/team/bridget-480.webp" srcset="../../assets/team/bridget-160.webp 160w, ../../assets/team/bridget-320.webp 320w, ../../assets/team/bridget-480.webp 480w" sizes="132px" alt="Bridget Bennett" width="480" height="480" loading="lazy" decoding="async"><div class="who"><h3>Bridget Bennett</h3><p class="role">Sales Consultant</p></div><p class="ct"><a href="tel:+64272930772">027 2930 772</a><a href="mailto:bridget.bennett@harcourts.co.nz">bridget.bennett@harcourts.co.nz</a></p></li>
+        <li class="tm" data-tilt><span class="glow" aria-hidden="true"></span><img src="../../assets/team/rosy-480.webp" srcset="../../assets/team/rosy-160.webp 160w, ../../assets/team/rosy-320.webp 320w, ../../assets/team/rosy-480.webp 480w" sizes="132px" alt="Rosy Qiu" width="480" height="480" loading="lazy" decoding="async"><div class="who"><h3>Rosy Qiu</h3><p class="role">Sales Consultant</p></div><p class="ct"><a href="tel:+64223388888">022 338 8888</a><a href="mailto:rosy.qiu@harcourts.co.nz">rosy.qiu@harcourts.co.nz</a></p></li>
+        <li class="tm" data-tilt><span class="glow" aria-hidden="true"></span><img src="../../assets/team/james-480.webp" srcset="../../assets/team/james-160.webp 160w, ../../assets/team/james-320.webp 320w, ../../assets/team/james-480.webp 480w" sizes="132px" alt="James Hu" width="480" height="480" loading="lazy" decoding="async"><div class="who"><h3>James Hu</h3><p class="role">Sales Consultant</p></div><p class="ct"><a href="tel:+642102560725">021 025 60725</a><a href="mailto:james.hu@harcourts.co.nz">james.hu@harcourts.co.nz</a></p></li>
+        <li class="tm" data-tilt><span class="glow" aria-hidden="true"></span><img src="../../assets/team/nyrelle-480.webp" srcset="../../assets/team/nyrelle-160.webp 160w, ../../assets/team/nyrelle-320.webp 320w, ../../assets/team/nyrelle-480.webp 480w" sizes="132px" alt="Nyrelle Foss" width="480" height="480" loading="lazy" decoding="async"><div class="who"><h3>Nyrelle Foss</h3><p class="role">Sales Consultant</p></div><p class="ct"><a href="tel:+64211263993">021 126 3993</a><a href="mailto:nyrelle.foss@harcourts.co.nz">nyrelle.foss@harcourts.co.nz</a></p></li>
+        <li class="tm" data-tilt><span class="glow" aria-hidden="true"></span><img src="../../assets/team/georgia-480.webp" srcset="../../assets/team/georgia-160.webp 160w, ../../assets/team/georgia-320.webp 320w, ../../assets/team/georgia-480.webp 480w" sizes="132px" alt="Georgia Ross" width="480" height="480" loading="lazy" decoding="async"><div class="who"><h3>Georgia Ross</h3><p class="role">Personal Assistant</p></div><p class="ct"><a href="tel:+6495381032">09 538 1032</a><a href="mailto:georgia.ross@harcourts.co.nz">georgia.ross@harcourts.co.nz</a></p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="sec" id="reviews" aria-labelledby="rv-h">
+    <div class="wrap">
+      <div class="sec-head rv-head" style="max-width:none">
+        <div style="display:grid;gap:18px"><span class="eyebrow">Reviews</span><h2 class="h2" id="rv-h" data-split>In their words.</h2></div>
+        <div class="rv-ctrl"><span class="rv-hint" id="rv-hint">Drag, swipe or use the arrows</span>
+          <button type="button" id="rv-prev" aria-label="Previous reviews" aria-controls="rv-strip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button type="button" id="rv-next" aria-label="Next reviews" aria-controls="rv-strip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="strip" id="rv-strip" tabindex="0" role="region" aria-label="Client reviews (scrolls sideways)">
+      <figure class="rv"><svg class="qm" viewBox="0 0 40 32" aria-hidden="true"><path fill="currentColor" d="M0 32V19C0 8 6 1 16 0l1 5c-5 1-8 5-8 10h7v17zm23 0V19c0-11 6-18 16-19l1 5c-5 1-8 5-8 10h7v17z"/></svg><blockquote>“Karl was recommended to us by 6 different people. We found Karl and his team very helpful &amp; very professional. Karl kept us well informed... The team went that extra mile to make our life less stressful.”</blockquote><figcaption><b>Patrick &amp; Doris Hindle</b><small>Eastridge Court, Northpark</small></figcaption></figure>
+      <figure class="rv"><svg class="qm" viewBox="0 0 40 32" aria-hidden="true"><path fill="currentColor" d="M0 32V19C0 8 6 1 16 0l1 5c-5 1-8 5-8 10h7v17zm23 0V19c0-11 6-18 16-19l1 5c-5 1-8 5-8 10h7v17z"/></svg><blockquote>“Having a team working on the sale meant we had multiple touch points or people to seek advice when necessary. Karl was very open, delivered as promised i.e. weekly emails, phone calls, timing of ad approvals &amp; placements.”</blockquote><figcaption><b>Brian &amp; Melissa Carr</b><small>Cockle Bay Road, Cockle Bay</small></figcaption></figure>
+      <figure class="rv"><svg class="qm" viewBox="0 0 40 32" aria-hidden="true"><path fill="currentColor" d="M0 32V19C0 8 6 1 16 0l1 5c-5 1-8 5-8 10h7v17zm23 0V19c0-11 6-18 16-19l1 5c-5 1-8 5-8 10h7v17z"/></svg><blockquote>“Karl possesses a high level of integrity and offers intelligent knowledge of the market. The entire sales process has been stress free and highly professional.”</blockquote><figcaption><b>Karen Shaw</b><small>Howick</small></figcaption></figure>
+      <figure class="rv"><svg class="qm" viewBox="0 0 40 32" aria-hidden="true"><path fill="currentColor" d="M0 32V19C0 8 6 1 16 0l1 5c-5 1-8 5-8 10h7v17zm23 0V19c0-11 6-18 16-19l1 5c-5 1-8 5-8 10h7v17z"/></svg><blockquote>“At all times I felt Karl had my best interest in mind &amp; he communicated with me throughout the process. Karl &amp; Bridget worked exceptionally well as a team.”</blockquote><figcaption><b>Vivienne Falloon</b><small>Pleasant Place, Mellons Bay</small></figcaption></figure>
+      <figure class="rv"><svg class="qm" viewBox="0 0 40 32" aria-hidden="true"><path fill="currentColor" d="M0 32V19C0 8 6 1 16 0l1 5c-5 1-8 5-8 10h7v17zm23 0V19c0-11 6-18 16-19l1 5c-5 1-8 5-8 10h7v17z"/></svg><blockquote>“Karl is very skilled at providing selling valuation estimations and thus managing the vendor's expectations... an excellent non aggressive manner which makes for a pleasant experience.”</blockquote><figcaption><b>Andy &amp; Sarah Mitchell</b><small>Te Anau Place, Pakuranga Heights</small></figcaption></figure>
+    </div>
+    <div class="wrap"><div class="rv-meter" aria-hidden="true"><span id="rv-bar"></span></div></div>
+  </section>
+
+  <!-- CONTACT / APPRAISAL FORM -->
+  <section class="sec grey" id="contact" aria-labelledby="ct-h">
+    <div class="wrap contact">
+      <div>
+        <span class="eyebrow">Free appraisal</span>
+        <h2 class="h2" id="ct-h" data-split style="margin:18px 0 22px">What's your home worth?</h2>
+        <p class="lede">Curious about your home's worth? Request a free home appraisal today — no strings attached, just expert guidance tailored to you. We'll be in touch within 48 hours.</p>
+        <div class="c-list">
+          <a href="tel:+64272044249"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></i>027 204 4249</a>
+          <a href="mailto:karl.vermeulen@harcourts.co.nz"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></i>karl.vermeulen@harcourts.co.nz</a>
+          <span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i>18 Fencible Drive, Howick, Auckland 2014</span>
+        </div>
+      </div>
+      <form class="form" id="appraisal-form" novalidate data-rv>
+        <div><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+        <div class="full"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="full"><label for="f-addr">Property address</label><input id="f-addr" name="address" type="text" autocomplete="street-address" required></div>
+        <div class="full"><label for="f-msg">Message <small>(optional)</small></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+        <div class="full"><button class="btn mag" type="submit">Request my free appraisal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        <p class="full note">Submitting opens your email app with your details ready to send.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-big" aria-hidden="true"><span data-fx="-1">Local roots.</span><span data-fx="1">Proven results.</span></p>
+    <div class="f-grid">
+      <div>
+        <img class="f-logo" src="../../assets/img/logo-white-800.webp" srcset="../../assets/img/logo-white-400.webp 400w, ../../assets/img/logo-white-800.webp 800w" sizes="(max-width: 600px) 54vw, (max-width: 1100px) 26vw, 209px" alt="TEAM K" width="800" height="153" loading="lazy" decoding="async">
+        <p>Team Karl Vermeulen · Harcourts Howick</p>
+        <span class="hc"><img src="../../assets/img/harcourts-logo-350.webp" srcset="../../assets/img/harcourts-logo-350.webp 350w" sizes="(max-width: 600px) 54vw, (max-width: 1100px) 26vw, 210px" alt="Harcourts — People First" width="350" height="42" loading="lazy" decoding="async"></span>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <p><a href="tel:+64272044249">027 204 4249</a></p>
+        <p><a href="mailto:karl.vermeulen@harcourts.co.nz">karl.vermeulen@harcourts.co.nz</a></p>
+        <p>18 Fencible Drive, Howick, Auckland 2014</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <p><a href="#sell">Selling</a> · <a href="#buy">Buying</a> · <a href="#team">Team</a> · <a href="#reviews">Reviews</a></p>
+        <p><a href="https://harcourts.net/nz/office/howick/listings/buy?team-member=karl-vermeulen" target="_blank" rel="noopener">View current listings</a></p>
+        <p><a href="#contact">Free appraisal</a></p>
+      </div>
+    </div>
+    <div class="f-base">
+      <span>© 2026 Team Karl Vermeulen · Harcourts Howick — licensed under the REAA 2008</span>
+      <a href="../../index.html">← All concepts</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document, H=d.documentElement;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var KIN=H.classList.contains('kin')&&window.gsap&&window.ScrollTrigger;
+  function $(s,c){return (c||d).querySelector(s)}
+  function $$(s,c){return Array.prototype.slice.call((c||d).querySelectorAll(s))}
+
+  /* ---------- mobile nav ---------- */
+  var nav=$('#nav'), mb=$('.menu-btn');
+  function closeNav(){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.setAttribute('aria-label','Open menu');}
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Close menu':'Open menu');});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))closeNav();});
+  d.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){closeNav();mb.focus();}});
+
+  /* ---------- appraisal form: honest mailto ---------- */
+  var f=$('#appraisal-form');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){f.reportValidity();return;}
+    var v=function(n){return (f.elements[n].value||'').trim();};
+    var addr=v('address');
+    var body='Name: '+v('name')+'\nPhone: '+v('phone')+'\nEmail: '+v('email')+'\nProperty address: '+addr+'\n\n'+v('message');
+    location.href='mailto:karl.vermeulen@harcourts.co.nz?subject='+encodeURIComponent('Free appraisal request – '+addr)+'&body='+encodeURIComponent(body);
+  });
+
+  /* ---------- sale tracker (works without GSAP; starts on its final "Sold" state) ---------- */
+  var STEPS=[
+    {day:1,t:'Listed & marketed',p:'Your home goes live with a marketing campaign tailored to it, reaching buyers across Howick and East Auckland.'},
+    {day:4,t:'Open home',p:'Buyers walk through. Every enquiry is followed up, and you get honest feedback straight after.'},
+    {day:8,t:'Offer',p:'An offer is on the table. Karl negotiates on your behalf and talks you through every condition in the contract.'},
+    {day:10,t:'Sold',p:'Sold, and on your timeline. The paperwork is in order, so you can plan your next move with confidence.'}
+  ];
+  var dayBtns=$$('.day'), tN=$('#trk-n'), tFill=$('#trk-fill'), tT=$('#trk-t'), tP=$('#trk-p'), cur=3, shownDay=10, autoTimer=null, dayTween=null;
+  function setDayNum(to,animate){
+    if(dayTween){dayTween.kill();dayTween=null;}
+    if(animate&&KIN){var o={v:shownDay};dayTween=gsap.to(o,{v:to,duration:.7,ease:'power2.out',onUpdate:function(){shownDay=Math.round(o.v);tN.textContent=shownDay;}});}
+    else{shownDay=to;tN.textContent=to;}
+  }
+  function selectStep(i,animate){
+    cur=i;
+    dayBtns.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false');b.classList.toggle('on',j<=i);});
+    tFill.style.transform='scaleX('+((i+1)/STEPS.length)+')';
+    setDayNum(STEPS[i].day,animate);
+    tT.textContent=STEPS[i].t; tP.textContent=STEPS[i].p;
+    if(animate&&KIN){gsap.fromTo([tT,tP],{y:14,opacity:0},{y:0,opacity:1,duration:.5,stagger:.06,ease:'power3.out',overwrite:true});}
+  }
+  function stopAuto(){if(autoTimer){clearTimeout(autoTimer);autoTimer=null;}}
+  function autoplay(){
+    stopAuto(); selectStep(0,true); var k=0;
+    (function next(){autoTimer=setTimeout(function(){k++;if(k<STEPS.length){selectStep(k,true);next();}else autoTimer=null;},1500);})();
+  }
+  dayBtns.forEach(function(b){b.addEventListener('click',function(){stopAuto();selectStep(+b.getAttribute('data-i'),true);});});
+  $('#trk-play').addEventListener('click',function(){ if(KIN) autoplay(); else {stopAuto();selectStep(3,false);} });
+  if(!KIN) $('#trk-play').hidden=true;
+
+  /* ---------- reviews strip: user-controlled (drag / swipe / arrows / keyboard) ---------- */
+  var strip=$('#rv-strip'), prev=$('#rv-prev'), next=$('#rv-next'), rvBar=$('#rv-bar');
+  function cardStep(){var c=strip.querySelector('.rv');return c?c.getBoundingClientRect().width+20:400;}
+  function updStrip(){
+    var max=strip.scrollWidth-strip.clientWidth, p=max>0?strip.scrollLeft/max:1;
+    var vis=strip.scrollWidth?strip.clientWidth/strip.scrollWidth:1;
+    rvBar.style.transform='translateX('+(p*(1-vis)/vis*100)+'%) scaleX(1)';
+    rvBar.style.width=(vis*100)+'%';
+    prev.disabled=strip.scrollLeft<=2; next.disabled=strip.scrollLeft>=max-2;
+  }
+  rvBar.style.transformOrigin='left';
+  strip.addEventListener('scroll',updStrip,{passive:true}); addEventListener('resize',updStrip); updStrip();
+  var smooth=reduce?'auto':'smooth';
+  prev.addEventListener('click',function(){strip.scrollBy({left:-cardStep(),behavior:smooth});});
+  next.addEventListener('click',function(){strip.scrollBy({left:cardStep(),behavior:smooth});});
+  strip.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();strip.scrollBy({left:cardStep(),behavior:smooth});}
+    if(e.key==='ArrowLeft'){e.preventDefault();strip.scrollBy({left:-cardStep(),behavior:smooth});}
+  });
+  (function(){ /* mouse drag (touch uses native swipe) */
+    var down=false,sx=0,sl=0,moved=false;
+    strip.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=strip.scrollLeft;});
+    addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>4&&!moved){moved=true;strip.classList.add('drag');}if(moved)strip.scrollLeft=sl-dx;});
+    addEventListener('pointerup',function(){if(!down)return;down=false;if(moved){var s=strip.scrollLeft;strip.classList.remove('drag');strip.scrollLeft=s;}});
+    strip.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false;}},true);
+    strip.addEventListener('dragstart',function(e){e.preventDefault();});
+  })();
+
+  /* ---------- kinetic layer (GSAP only; never runs with reduced motion or if GSAP failed) ---------- */
+  if(!KIN) return;
+  window.__kinOK=true;
+  try{ kinetic(); }
+  catch(err){
+    console.error(err);
+    try{ScrollTrigger.getAll().forEach(function(s){s.kill();});gsap.globalTimeline.clear();}catch(e){}
+    H.classList.remove('kin');
+    $$('[style]').forEach(function(el){if(el.closest('.trk-card')||el.classList.contains('sc'))return;el.style.removeProperty('opacity');el.style.removeProperty('transform');el.style.removeProperty('visibility');});
+    stopAuto(); selectStep(3,false);
+  }
+
+  function kinetic(){
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* split the hero headline into letters (visual copy only; the h1 also carries a screen-reader copy) */
+    var h1=$('.kt'), chars=[];
+    $$('.kt .w').forEach(function(w){
+      var txt=w.textContent, bar=w.querySelector('.hl-bar');
+      var fi=d.createElement('span'); fi.className='fi';
+      txt.split('').forEach(function(c){var s=d.createElement('span');s.className='ch';s.textContent=c;fi.appendChild(s);chars.push(s);});
+      w.textContent=''; if(bar)w.appendChild(bar); w.appendChild(fi);
+      if(w.hasAttribute('data-ghost')){var g=d.createElement('span');g.className='gh';g.textContent=txt;w.appendChild(g);}
+    });
+    gsap.set('.kt-vis',{opacity:1});
+
+    /* ---- hero intro ---- */
+    var tl=gsap.timeline({defaults:{ease:'expo.out'}});
+    tl.fromTo('.hdr',{y:-30,opacity:0},{y:0,opacity:1,duration:1,clearProps:'transform'},0)
+      .fromTo('.hero .eyebrow',{y:20,opacity:0},{y:0,opacity:1,duration:.9},.1)
+      .fromTo(chars,{yPercent:120,rotate:8,opacity:0},{yPercent:0,rotate:0,opacity:1,duration:1.1,stagger:.03},.15)
+      .fromTo('.kt .hl-bar',{scaleX:0},{scaleX:1,duration:.9,stagger:.18,ease:'power3.inOut'},'-=.55')
+      .fromTo('.hero .lede, .hero .ctas, .hero .hero-note',{y:26,opacity:0},{y:0,opacity:1,duration:1,stagger:.1},'-=.75')
+      .fromTo('.panel',{scaleY:0,opacity:1},{scaleY:1,opacity:1,duration:1.3,ease:'expo.inOut'},.2)
+      .fromTo('.karl',{yPercent:40,opacity:0},{yPercent:0,opacity:1,duration:1.5},.75)
+      .fromTo('.chip-b',{opacity:0,scale:.8,x:function(i){return [-70,70,-50][i]},y:function(i){return [40,-30,50][i]}},{opacity:1,scale:1,x:0,y:0,duration:1.3,stagger:.16,ease:'back.out(1.4)'},1.25)
+      .add(function(){
+        h1.classList.add('done');
+        $$('.chip-b').forEach(function(c,i){gsap.to(c,{y:[-8,7,-6][i],x:[4,-5,3][i],duration:2.6+i*.5,ease:'sine.inOut',yoyo:true,repeat:-1});});
+      });
+
+    /* ---- hero on scroll: words drift apart, two words thin out to outline, Karl sinks, chips parallax ---- */
+    var hs={trigger:'.hero',start:'top top',end:'bottom top',scrub:.6};
+    $$('.kt .w').forEach(function(w){
+      var s=+w.getAttribute('data-shift')||0;
+      gsap.to(w,{x:function(){return innerWidth*s/100;},ease:'none',scrollTrigger:Object.assign({invalidateOnRefresh:true},hs)});
+      if(w.hasAttribute('data-ghost')){
+        gsap.to(w.querySelector('.fi'),{opacity:.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'60% top',scrub:.6}});
+        gsap.to(w.querySelector('.gh'),{opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'60% top',scrub:.6}});
+      }
+    });
+    gsap.to('.visual-in',{y:90,ease:'none',scrollTrigger:hs});
+    gsap.to('.panel',{rotation:-3,ease:'none',scrollTrigger:hs});
+    $$('.chip').forEach(function(c,i){gsap.to(c,{y:[-120,-60,-160][i],ease:'none',scrollTrigger:hs});});
+
+    /* ---- scroll progress ---- */
+    gsap.to('.prog',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+
+    /* ---- twin marquees, opposite directions, nudged by scroll velocity ---- */
+    var mqs=$$('.mq-track').map(function(t){
+      var g=t.querySelector('.mq-g'); t.appendChild(g.cloneNode(true));
+      var dir=+t.getAttribute('data-dir');
+      var tw=dir<0 ? gsap.fromTo(t,{xPercent:0},{xPercent:-50,duration:46,ease:'none',repeat:-1})
+                   : gsap.fromTo(t,{xPercent:-50},{xPercent:0,duration:40,ease:'none',repeat:-1});
+      tw.totalTime(tw.duration()*400); /* start deep inside the loop so reversing (scrolling up) never hits the start */
+      return tw;
+    });
+    var boost={v:1};
+    ScrollTrigger.create({onUpdate:function(self){
+      var v=Math.min(Math.abs(self.getVelocity())/250,6), sgn=self.direction<0?-1:1;
+      gsap.killTweensOf(boost);
+      boost.v=sgn*(1+v);
+      gsap.to(boost,{v:sgn,duration:1.2,ease:'power2.out',onUpdate:function(){mqs.forEach(function(m){m.timeScale(boost.v);});}});
+      mqs.forEach(function(m){m.timeScale(boost.v);});
+    }});
+
+    /* ---- headings: words rise out of a mask ---- */
+    $$('[data-split]').forEach(function(h){
+      var words=h.textContent.trim().split(/\s+/);
+      h.setAttribute('aria-label',h.textContent.trim());
+      h.innerHTML=words.map(function(w){return '<span class="sw" aria-hidden="true" style="display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .12em;margin-bottom:-.12em"><span class="si" style="display:inline-block">'+w.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span></span>';}).join(' ');
+      gsap.fromTo(h.querySelectorAll('.si'),{yPercent:110,rotate:4},{yPercent:0,rotate:0,duration:1.1,stagger:.07,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 86%'}});
+    });
+
+    /* ---- the about statement lights up word by word as you scroll ---- */
+    var say=$('.say');
+    say.innerHTML=say.textContent.trim().split(/\s+/).map(function(w){return '<span class="sw2">'+w+'</span>';}).join(' ');
+    gsap.fromTo(say.querySelectorAll('.sw2'),{opacity:.14},{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:say,start:'top 82%',end:'bottom 48%',scrub:.4}});
+
+    /* ---- generic reveals ---- */
+    gsap.set('[data-rv]',{y:40,opacity:0});
+    ScrollTrigger.batch('[data-rv]',{start:'top 88%',once:true,onEnter:function(els){gsap.to(els,{y:0,opacity:1,duration:1,stagger:.09,ease:'expo.out',overwrite:true});}});
+    gsap.fromTo('.photo .wipe',{scaleX:1},{scaleX:0,duration:1.2,ease:'expo.inOut',delay:.15,scrollTrigger:{trigger:'.photo',start:'top 85%'}});
+    gsap.fromTo('.photo img',{scale:1.18},{scale:1,duration:1.6,ease:'expo.out',scrollTrigger:{trigger:'.photo',start:'top 85%'}});
+
+    /* ---- counters ---- */
+    $$('[data-count]').forEach(function(el){
+      var to=+el.getAttribute('data-count'), sep=el.hasAttribute('data-sep'), o={v:0};
+      var fmt=function(n){n=Math.round(n);return sep?n.toLocaleString('en-NZ'):String(n);};
+      el.textContent=fmt(0);
+      gsap.to(o,{v:to,duration:2,ease:'power3.out',onUpdate:function(){el.textContent=fmt(o.v);},scrollTrigger:{trigger:el,start:'top 90%'}});
+    });
+
+    /* ---- stacking cards (desktop sticky only) ---- */
+    var mm=gsap.matchMedia();
+    mm.add('(min-width:861px) and (min-height:700px)',function(){
+      var cards=$$('.sc');
+      cards.forEach(function(c,i){
+        var nx=cards[i+1]; if(!nx)return;
+        var st={trigger:nx,start:'top bottom',end:'top '+(72+24+(i+1)*18)+'px',scrub:true};
+        gsap.to(c.querySelector('.sc-in'),{scale:.92-(cards.length-2-i)*.02,ease:'none',scrollTrigger:st});
+        var sh=c.querySelector('.shade'); if(sh) gsap.to(sh,{opacity:.35,ease:'none',scrollTrigger:st});
+      });
+    });
+    $$('.sc-img img').forEach(function(img){
+      gsap.fromTo(img,{scale:1.15},{scale:1,ease:'none',scrollTrigger:{trigger:img.closest('.sc'),start:'top bottom',end:'top 30%',scrub:true}});
+    });
+
+    /* ---- sale tracker: reset to Day 1, then auto-play once when it scrolls into view ---- */
+    selectStep(0,false);
+    ScrollTrigger.create({trigger:'.trk-card',start:'top 72%',once:true,onEnter:function(){autoplay();}});
+
+    /* ---- team: staggered entrance, pointer spotlight + gentle tilt on desktop ---- */
+    gsap.set('.tm',{opacity:0,y:50});
+    ScrollTrigger.batch('.tm',{start:'top 90%',once:true,onEnter:function(els){gsap.to(els,{y:0,opacity:1,duration:1,stagger:.08,ease:'expo.out'});}});
+    if(fine){
+      $$('[data-tilt]').forEach(function(c){
+        var g=c.querySelector('.glow'), gx=gsap.quickTo(g,'x',{duration:.35,ease:'power3'}), gy=gsap.quickTo(g,'y',{duration:.35,ease:'power3'});
+        c.addEventListener('pointerenter',function(e){var r=c.getBoundingClientRect();gsap.set(g,{x:e.clientX-r.left,y:e.clientY-r.top});});
+        c.addEventListener('pointermove',function(e){
+          var r=c.getBoundingClientRect(), px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+          gx(e.clientX-r.left); gy(e.clientY-r.top);
+          gsap.to(c,{rotateY:px*7,rotateX:-py*7,transformPerspective:900,duration:.5,ease:'power2.out',overwrite:'auto'});
+        });
+        c.addEventListener('pointerleave',function(){gsap.to(c,{rotateX:0,rotateY:0,duration:.9,ease:'elastic.out(1,.5)',overwrite:'auto'});});
+      });
+
+      /* magnetic primary CTAs */
+      $$('.mag').forEach(function(b){
+        var x=gsap.quickTo(b,'x',{duration:.6,ease:'elastic.out(1,.45)'}), y=gsap.quickTo(b,'y',{duration:.6,ease:'elastic.out(1,.45)'});
+        b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();x((e.clientX-r.left-r.width/2)*.25);y((e.clientY-r.top-r.height/2)*.3);});
+        b.addEventListener('pointerleave',function(){x(0);y(0);});
+      });
+    }
+
+    /* ---- reviews: cards slide in from the right ---- */
+    gsap.fromTo('.rv',{x:120,opacity:0},{x:0,opacity:1,duration:1.1,stagger:.08,ease:'expo.out',scrollTrigger:{trigger:'#rv-strip',start:'top 85%'}});
+
+    /* ---- footer statement: the two lines slide in opposite directions ---- */
+    $$('.foot-big [data-fx]').forEach(function(s){
+      var dir=+s.getAttribute('data-fx');
+      gsap.fromTo(s,{xPercent:dir*-14},{xPercent:dir*2,ease:'none',scrollTrigger:{trigger:'.foot',start:'top bottom',end:'top 20%',scrub:.5}});
+    });
+
+    addEventListener('load',function(){ScrollTrigger.refresh();});
+  }
+})();
+</script>
+<script src="../../assets/concepts.js" defer></script>
+</body>
+</html>
