@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Team K — Homepage Concepts</title>
-<meta name="description" content="Ten homepage design concepts for Team Karl Vermeulen, Harcourts Howick.">
+<meta name="description" content="Eighteen homepage design concepts for Team Karl Vermeulen, Harcourts Howick.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,15 +51,15 @@
 </head>
 <body>
 <header>
-  <img src="assets/img/logo-white.png" alt="Team K" width="800" height="153">
+  <img src="assets/img/logo-white-400.webp" srcset="assets/img/logo-white-400.webp 400w, assets/img/logo-white-800.webp 800w" sizes="210px" alt="Team K" width="800" height="153">
   <h1>Homepage concepts for Team Karl Vermeulen</h1>
-  <p>Ten design directions in ten different styles, all built with the Team K brand, the real team and real client reviews. Choose a style below to see the full design. You can switch between styles at any time using the bar at the bottom of each page.</p>
+  <p>Eighteen design directions, all built with the Team K brand, the real team and real client reviews. Choose a style below to see the full design. You can switch between styles at any time using the bar at the bottom of each page.</p>
 </header>
 <main>
   <div class="filters" id="filters" role="group" aria-label="Filter by style"></div>
   <div class="grid" id="grid"></div>
 </main>
-<footer>Prepared for Team Karl Vermeulen · Harcourts Howick <img src="assets/img/harcourts-logo.png" alt="Harcourts" width="350" height="42"></footer>
+<footer>Prepared for Team Karl Vermeulen · Harcourts Howick <img src="assets/img/harcourts-logo-350.webp" alt="Harcourts" width="350" height="42"></footer>
 <script>
 const concepts = [
   ['01-classic-harcourts','Classic','Corporate','Subtle motion','Polished and conventional. White and navy with cyan accents, a sunset hero and a clear, familiar layout. The safe choice, closest to the current site.'],
@@ -71,7 +71,15 @@ const concepts = [
   ['07-minimal-swiss','Minimal','Swiss Grid','Minimal motion','Architectural and precise. A strict grid, thin lines, light typography and lots of calm white space.'],
   ['08-warm-community','Friendly','Community','Subtle motion','Team-forward and approachable. Rounded, light-blue tones, big tap targets and click-to-call for every team member.'],
   ['09-split-sell-buy','Interactive','Split Screen','Interactive','Task-oriented. Opens on a split screen, "I\'m selling" or "I\'m buying", and each half expands as you hover.'],
-  ['10-bento-modern','Modern','Bento Grid','Animated','Contemporary tile layout. Stats, Karl, reviews, the timeline and listings in a tidy grid of cards.']
+  ['10-bento-modern','Modern','Bento Grid','Animated','Contemporary tile layout. Stats, Karl, reviews, the timeline and listings in a tidy grid of cards.'],
+  ['11-original-demo','Original','First Demo','Highly animated','The first demo that started it all: dark, cinematic and full of interaction, with an animated sale tracker and team stories.'],
+  ['12-animated-motion','Animated','Motion-rich','Highly animated','A cinematic showpiece: scroll-driven storytelling, the 10-day sale journey animated step by step, and layered parallax.'],
+  ['13-cinematic-scroll','Cinematic','Scroll Story','Highly animated','Plays like a film. Scenes open through animated masks, and the 10-day sale scrolls sideways panel by panel.'],
+  ['14-kinetic-type','Kinetic','Interactive','Highly animated','Bold moving typography and tactile interaction: magnetic buttons, stacking cards, spotlight team cards and a sale tracker you can tap through.'],
+  ['15-glass-aurora','Glass','Aurora','Subtle motion','Frosted-glass panels floating over a slowly drifting aurora in Harcourts blues. Modern, airy and calm.'],
+  ['16-brutalist-blocks','Brutalist','Bold Blocks','Minimal motion','Poster-style: thick borders, hard shadows, solid colour blocks and oversized type. Bold and memorable.'],
+  ['17-illustrated-playful','Illustrated','Playful','Subtle motion','Custom illustrations throughout: the Eastern Beaches coastline, houses, SOLD signs and the 10-day journey. Warm and friendly.'],
+  ['18-local-explorer','Local','Suburb Explorer','Interactive','Built around an interactive map of the suburbs Team K covers, with local reviews and an appraisal for each one.']
 ];
 const types = ['All', ...new Set(concepts.map(c => c[1]))];
 const filters = document.getElementById('filters');
@@ -84,7 +92,7 @@ filters.addEventListener('click', e => {
 document.getElementById('grid').innerHTML = concepts.map(([slug,type,style,motion,desc],i)=>`
   <article class="card" data-t="${type}">
     <div class="thumb">
-      <img src="designs/${slug}/thumb.jpg" alt="" width="720" height="450" loading="${i<3?'eager':'lazy'}" decoding="async">
+      <img src="designs/${slug}/thumb.webp" alt="" width="720" height="450" loading="${i<3?'eager':'lazy'}" decoding="async">
     </div>
     <div class="body">
       <span class="num">Concept ${String(i+1).padStart(2,'0')}</span>

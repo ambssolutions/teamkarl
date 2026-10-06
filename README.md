@@ -1,6 +1,6 @@
 # Team K — homepage concepts
 
-Ten homepage design concepts for **Team Karl Vermeulen (TEAM K), Harcourts Howick**.
+Eighteen homepage design concepts for **Team Karl Vermeulen (TEAM K), Harcourts Howick**.
 
 Open `index.html` for the gallery. Each concept lives in `designs/NN-slug/index.html` and is a single static page that uses the shared brand assets in `assets/`.
 
@@ -16,6 +16,14 @@ Open `index.html` for the gallery. Each concept lives in `designs/NN-slug/index.
 | 08 | Friendly | Community |
 | 09 | Interactive | Split Screen |
 | 10 | Modern | Bento Grid |
+| 11 | Original | First Demo |
+| 12 | Animated | Motion-rich |
+| 13 | Cinematic | Scroll Story |
+| 14 | Kinetic | Interactive |
+| 15 | Glass | Aurora |
+| 16 | Brutalist | Bold Blocks |
+| 17 | Illustrated | Playful |
+| 18 | Local | Suburb Explorer |
 
 No build step. To preview locally: `python3 -m http.server`, then open http://localhost:8000.
 

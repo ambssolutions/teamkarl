@@ -12,7 +12,15 @@
     ['07-minimal-swiss', 'minimal', 'Minimal', 'Swiss Grid'],
     ['08-warm-community', 'friendly', 'Friendly', 'Community'],
     ['09-split-sell-buy', 'interactive', 'Interactive', 'Split Screen'],
-    ['10-bento-modern', 'modern', 'Modern', 'Bento Grid']
+    ['10-bento-modern', 'modern', 'Modern', 'Bento Grid'],
+    ['11-original-demo', 'original', 'Original', 'First Demo'],
+    ['12-animated-motion', 'animated', 'Animated', 'Motion-rich'],
+    ['13-cinematic-scroll', 'cinematic', 'Cinematic', 'Scroll Story'],
+    ['14-kinetic-type', 'kinetic', 'Kinetic', 'Interactive'],
+    ['15-glass-aurora', 'glass', 'Glass', 'Aurora'],
+    ['16-brutalist-blocks', 'brutalist', 'Brutalist', 'Bold Blocks'],
+    ['17-illustrated-playful', 'illustrated', 'Illustrated', 'Playful'],
+    ['18-local-explorer', 'local', 'Local', 'Suburb Explorer']
   ];
   var current = document.documentElement.getAttribute('data-concept');
   var i = CONCEPTS.findIndex(function (c) { return c[0] === current; });
