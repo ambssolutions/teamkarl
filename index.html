@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team K — Homepage Concepts</title>
+<meta name="description" content="Ten homepage design concepts for Team Karl Vermeulen, Harcourts Howick.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0B1F3A;--cyan:#00ADEF;--blue:#0077C8;--grey:#5B6B80;--line:#E3EAF2;--bg:#F5F8FB}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--navy);background:var(--bg);line-height:1.6}
+  header{background:var(--navy);color:#fff;padding:56px 20px 64px;text-align:center;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:repeating-linear-gradient(135deg,var(--cyan) 0 14px,var(--navy) 14px 28px)}
+  header img{height:40px;width:auto}
+  header h1{font-weight:300;font-size:clamp(1.6rem,3.5vw,2.4rem);margin:28px 0 8px;letter-spacing:.01em}
+  header p{margin:0 auto;max-width:640px;color:#C9D6E6}
+  main{max-width:1240px;margin:0 auto;padding:48px 20px 72px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px}
+  @media (max-width:400px){.grid{grid-template-columns:1fr}}
+  .card{position:relative;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+  .card:hover{box-shadow:0 18px 40px -22px rgba(11,31,58,.35);transform:translateY(-2px)}
+  .card .thumb{display:block;aspect-ratio:16/10;background:var(--line);overflow:hidden;border-bottom:1px solid var(--line)}
+  .card img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .num{font-size:.75rem;font-weight:600;letter-spacing:.14em;color:var(--blue);text-transform:uppercase}
+  h2{margin:0;font-size:1.15rem;font-weight:600}
+  .body p{margin:0;color:var(--grey);font-size:.93rem;flex:1}
+  .go{margin-top:12px;align-self:flex-start;display:inline-flex;gap:8px;align-items:center;background:var(--navy);color:#fff;text-decoration:none;padding:10px 18px;border-radius:999px;font-size:.9rem;font-weight:500}
+  .go::after{content:"";position:absolute;inset:0;border-radius:14px}
+  .card:hover .go{background:var(--blue)}
+  .card:hover img{transform:scale(1.03)}
+  .card img{transition:transform .5s}
+  a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 32px}
+  .filters button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:#fff;color:var(--navy);padding:8px 16px;border-radius:999px;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .filters button:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+  .dash{color:var(--cyan);font-weight:300}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 4px}
+  .tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:999px;background:#EAF6FD;color:var(--blue)}
+  .tag.motion{background:#F1F3F6;color:var(--grey)}
+  .card[hidden]{display:none}
+  footer{text-align:center;color:var(--grey);font-size:.85rem;padding:0 20px 48px}
+  footer img{height:22px;width:auto;vertical-align:middle;margin-left:6px}
+  @media (prefers-reduced-motion:reduce){.card,.card img{transition:none}.card:hover,.card:hover img{transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/img/logo-white.png" alt="Team K" width="800" height="153">
+  <h1>Homepage concepts for Team Karl Vermeulen</h1>
+  <p>Ten design directions in ten different styles, all built with the Team K brand, the real team and real client reviews. Choose a style below to see the full design. You can switch between styles at any time using the bar at the bottom of each page.</p>
+</header>
+<main>
+  <div class="filters" id="filters" role="group" aria-label="Filter by style"></div>
+  <div class="grid" id="grid"></div>
+</main>
+<footer>Prepared for Team Karl Vermeulen · Harcourts Howick <img src="assets/img/harcourts-logo.png" alt="Harcourts" width="350" height="42"></footer>
+<script>
+const concepts = [
+  ['01-classic-harcourts','Classic','Corporate','Subtle motion','Polished and conventional. White and navy with cyan accents, a sunset hero and a clear, familiar layout. The safe choice, closest to the current site.'],
+  ['02-editorial-luxury','Luxury','Editorial','Subtle motion','A high-end magazine feel. Elegant serif headings, a warm off-white backdrop and generous whitespace. Quiet, premium and understated.'],
+  ['03-coastal-eastern-beaches','Lifestyle','Coastal','Subtle motion','Celebrates the local coast. Rangitoto sunset hero, warm sand tones and soft wave dividers. Relaxed but professional.'],
+  ['04-bold-navy','Bold','Dark Premium','Subtle motion','Confident and high-contrast. Deep navy, big headlines, and the Harcourts tie stripe as a motif behind Karl.'],
+  ['05-personal-karl','Personal','Storytelling','Subtle motion','Karl-first and warm. A personal letter from Karl, his story and signature, and the people behind every sale.'],
+  ['06-results-data','Results','Data-driven','Animated','Numbers-led for sellers who want evidence. Count-up stats, awards, and a 10-day sale timeline that fills as you scroll.'],
+  ['07-minimal-swiss','Minimal','Swiss Grid','Minimal motion','Architectural and precise. A strict grid, thin lines, light typography and lots of calm white space.'],
+  ['08-warm-community','Friendly','Community','Subtle motion','Team-forward and approachable. Rounded, light-blue tones, big tap targets and click-to-call for every team member.'],
+  ['09-split-sell-buy','Interactive','Split Screen','Interactive','Task-oriented. Opens on a split screen, "I\'m selling" or "I\'m buying", and each half expands as you hover.'],
+  ['10-bento-modern','Modern','Bento Grid','Animated','Contemporary tile layout. Stats, Karl, reviews, the timeline and listings in a tidy grid of cards.']
+];
+const types = ['All', ...new Set(concepts.map(c => c[1]))];
+const filters = document.getElementById('filters');
+filters.innerHTML = types.map((t,i) => `<button type="button" aria-pressed="${i===0}" data-t="${t}">${t}</button>`).join('');
+filters.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  filters.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  document.querySelectorAll('.card').forEach(c => c.hidden = b.dataset.t !== 'All' && c.dataset.t !== b.dataset.t);
+});
+document.getElementById('grid').innerHTML = concepts.map(([slug,type,style,motion,desc],i)=>`
+  <article class="card" data-t="${type}">
+    <div class="thumb">
+      <img src="designs/${slug}/thumb.jpg" alt="" width="720" height="450" loading="${i<3?'eager':'lazy'}" decoding="async">
+    </div>
+    <div class="body">
+      <span class="num">Concept ${String(i+1).padStart(2,'0')}</span>
+      <h2>${type} <span class="dash">—</span> ${style}</h2>
+      <div class="tags"><span class="tag">${type}</span><span class="tag motion">${motion}</span></div>
+      <p>${desc}</p>
+      <a class="go" href="designs/${slug}/" aria-label="Choose concept ${i+1}: ${type} — ${style}">Choose ${type} <span aria-hidden="true">→</span></a>
+    </div>
+  </article>`).join('');
+</script>
+</body>
+</html>
