@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/classic", "destination": "/designs/01-classic-harcourts/index.html" },
+    { "source": "/luxury", "destination": "/designs/02-editorial-luxury/index.html" },
+    { "source": "/lifestyle", "destination": "/designs/03-coastal-eastern-beaches/index.html" },
+    { "source": "/bold", "destination": "/designs/04-bold-navy/index.html" },
+    { "source": "/personal", "destination": "/designs/05-personal-karl/index.html" },
+    { "source": "/results", "destination": "/designs/06-results-data/index.html" },
+    { "source": "/minimal", "destination": "/designs/07-minimal-swiss/index.html" },
+    { "source": "/friendly", "destination": "/designs/08-warm-community/index.html" },
+    { "source": "/interactive", "destination": "/designs/09-split-sell-buy/index.html" },
+    { "source": "/modern", "destination": "/designs/10-bento-modern/index.html" }
+  ],
+  "headers": [
+    { "source": "/(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }] }
+  ]
+}

@@ -1,0 +1,647 @@
+<!-- Concept 06: Results — Data-driven — numbers-led, evidence-first homepage with a stats panel, 10-day sale timeline and awards row -->
+<!doctype html>
+<html lang="en-NZ" data-concept="06-results-data">
+<head>
+<script>document.documentElement.classList.add('js')</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Close to $845 million sold — Team Karl Vermeulen | Harcourts Howick</title>
+<meta name="description" content="Team Karl Vermeulen, Harcourts Howick: close to $845 million in property sales, top 1% of Harcourts consultants internationally, 4,000+ clients. See how we'd sell your East Auckland home.">
+<meta property="og:title" content="Close to $845 million sold. Here's how we'd sell yours.">
+<meta property="og:description" content="Team Karl Vermeulen, Harcourts Howick — 25+ years, top 1% of Harcourts internationally, 4,000+ clients.">
+<meta property="og:image" content="../../assets/img/rangitoto-sunset.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#00ADEF; --blue:#0077C8; --navy:#0B1F3A; --deep:#071428;
+  --grey:#F5F8FB; --line:#E3EAF2; --muted:#5B6B80; --ink:#1B2B42;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:80px}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.6;font-size:16.5px;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1,"cv11" 1}
+img{max-width:100%;display:block}
+a{color:var(--blue)}
+h1,h2,h3{color:var(--navy);line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
+h2{font-size:clamp(1.75rem,3.2vw,2.5rem);font-weight:700}
+h3{font-weight:600}
+p{margin:0 0 1em}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.kicker{display:flex;align-items:center;gap:10px;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.kicker::before{content:"";width:22px;height:2px;background:var(--cyan)}
+.lead{font-size:1.1rem;color:var(--muted);max-width:40em}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--navy);color:#fff;padding:8px 14px;z-index:100}
+.skip:focus{left:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;padding:.9em 1.4em;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:inherit;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--navy)}
+.btn-line{border-color:#C6D3E1;color:var(--navy);background:#fff}
+.btn-line:hover{border-color:var(--navy)}
+.btn svg{transition:transform .2s}
+.btn:hover svg{transform:translateX(3px)}
+
+/* header */
+header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+header.site.scrolled{box-shadow:0 10px 30px -18px rgba(11,31,58,.35)}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.hdr .logo img{height:30px;width:auto}
+nav.main ul{list-style:none;margin:0;padding:0;display:flex;gap:28px}
+nav.main a{color:var(--navy);text-decoration:none;font-weight:500;font-size:.93rem}
+nav.main a:hover{color:var(--blue)}
+.hdr-cta{display:flex;align-items:center;gap:16px}
+.hdr-cta .tel{color:var(--navy);font-weight:600;text-decoration:none;font-size:.93rem;white-space:nowrap}
+.hdr-cta .btn{padding:.65em 1.1em}
+.menu-btn{display:none;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;font-weight:600;color:var(--navy);cursor:pointer}
+
+/* hero */
+.hero{position:relative;padding:72px 0 88px;background:
+  linear-gradient(180deg,rgba(245,248,251,0) 60%,#fff 100%),
+  linear-gradient(var(--line) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/48px 48px,var(--grey);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,4.4vw,3.5rem);font-weight:800;letter-spacing:-.035em;margin-bottom:.35em}
+.hero h1 .hl{color:var(--blue)}
+.hero .lead{margin-bottom:1.8em}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero .proof{display:flex;align-items:center;gap:14px;margin-top:32px;font-size:.88rem;color:var(--muted)}
+.hero .proof img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(11,31,58,.18)}
+.hero .proof strong{color:var(--navy)}
+
+.panel{background:var(--navy);color:#fff;border-radius:16px;padding:34px;box-shadow:0 40px 80px -40px rgba(7,20,40,.65);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:repeating-linear-gradient(135deg,var(--cyan) 0 10px,var(--navy) 10px 20px)}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#8FA6C2;margin-bottom:10px}
+.panel-head .live{display:flex;align-items:center;gap:8px}
+.panel-head .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+.big{font-size:clamp(3.2rem,6.4vw,5.2rem);font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff}
+.big small{font-size:.42em;font-weight:700;color:var(--cyan);letter-spacing:-.01em;margin-left:4px}
+.big-cap{color:#B9C8DA;margin:10px 0 26px;font-size:.95rem}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden}
+.tile{background:#0F2747;padding:18px 20px}
+.tile b{display:block;font-size:1.9rem;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.tile>span{font-size:.84rem;color:#B9C8DA}
+.panel-foot{margin-top:18px;font-size:.78rem;color:#8FA6C2}
+
+/* awards */
+.awards{border-bottom:1px solid var(--line);background:#fff}
+.aw-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.aw{padding:34px 26px;border-left:1px solid var(--line);display:flex;gap:16px;align-items:flex-start}
+.aw:first-child{border-left:0;padding-left:0}
+.aw svg{flex:none;color:var(--blue)}
+.aw b{display:block;color:var(--navy);font-size:1.02rem;line-height:1.3;margin-bottom:4px}
+.aw span{font-size:.86rem;color:var(--muted);line-height:1.45;display:block}
+
+/* timeline */
+.timeline{padding:110px 0 100px}
+.tl-head{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.tl-head blockquote{margin:0;border-left:3px solid var(--cyan);padding:4px 0 4px 20px;color:var(--ink);font-size:1.02rem}
+.tl-head cite{display:block;font-style:normal;color:var(--muted);font-size:.85rem;margin-top:8px}
+.track-wrap{background:var(--grey);border:1px solid var(--line);border-radius:16px;padding:48px 44px 40px}
+.track{position:relative;height:8px;border-radius:8px;background:#DCE5EF;margin:14px 0 0}
+.track .fill{position:absolute;inset:0 auto 0 0;width:100%;border-radius:8px;background:linear-gradient(90deg,var(--blue),var(--cyan));transform-origin:left;transform:scaleX(1)}
+.js .track .fill{transform:scaleX(0);transition:transform 2.2s var(--ease)}
+.js .track.in .fill{transform:scaleX(1)}
+.ticks{position:absolute;inset:0;display:flex;justify-content:space-between;pointer-events:none}
+.ticks i{width:2px;height:8px;background:rgba(255,255,255,.7)}
+.ticks i:first-child,.ticks i:last-child{opacity:0}
+.days{display:flex;justify-content:space-between;margin-top:12px;font-size:.75rem;color:var(--muted);font-weight:500}
+.days span{width:0;display:flex;justify-content:center;white-space:nowrap}
+.ms{position:absolute;top:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--blue);box-shadow:0 0 0 6px rgba(0,173,239,.15)}
+.ms.sold{width:30px;height:30px;background:var(--navy);border-color:var(--cyan)}
+.js .ms{opacity:0;transform:translate(-50%,-50%) scale(.4);transition:opacity .4s,transform .5s var(--ease)}
+.js .track.in .ms{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.ms-labels{position:relative;height:120px;margin-top:22px}
+.ml{position:absolute;top:0;transform:translateX(-50%);width:180px;text-align:center}
+.ml .d{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--blue);padding:3px 8px;border-radius:4px;margin-bottom:8px}
+.ml.sold .d{background:var(--navy)}
+.ml b{display:block;color:var(--navy);font-size:1.02rem}
+.ml span{display:block;font-size:.84rem;color:var(--muted);line-height:1.4}
+.ml.first{transform:none;text-align:left;left:0!important}
+.ml.last{transform:none;text-align:right;left:auto!important;right:0}
+.tl-note{margin:28px 0 0;font-size:.82rem;color:var(--muted)}
+.js .track.in .ms:nth-of-type(1){transition-delay:.1s}
+.js .track.in .ms:nth-of-type(2){transition-delay:.75s}
+.js .track.in .ms:nth-of-type(3){transition-delay:1.5s}
+.js .track.in .ms:nth-of-type(4){transition-delay:2.1s}
+
+/* rank viz */
+.rank{background:var(--navy);color:#fff;padding:100px 0}
+.rank h2{color:#fff}
+.rank .kicker{color:var(--cyan)}
+.rank-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center}
+.rank p{color:#B9C8DA}
+.dots{display:grid;grid-template-columns:repeat(20,1fr);gap:7px;max-width:520px}
+.dots i{aspect-ratio:1;border-radius:3px;background:rgba(255,255,255,.12)}
+.dots i.top{background:var(--cyan);box-shadow:0 0 0 4px rgba(0,173,239,.25)}
+.dots-cap{display:flex;gap:22px;margin-top:18px;font-size:.84rem;color:#B9C8DA;flex-wrap:wrap}
+.dots-cap span{display:flex;align-items:center;gap:8px}
+.dots-cap span::before{content:"";width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,.18)}
+.dots-cap span.k::before{background:var(--cyan)}
+.bars{margin-top:34px;display:grid;gap:14px;max-width:520px}
+.bar{display:grid;grid-template-columns:150px 1fr 54px;gap:14px;align-items:center;font-size:.88rem;color:#D4DEEA}
+.bar .b{height:10px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.bar .b i{display:block;height:100%;background:var(--cyan);border-radius:6px;transform-origin:left}
+.js .bar .b i{transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.js .bars.in .bar .b i{transform:scaleX(1)}
+.bar strong{color:#fff;text-align:right;white-space:nowrap}
+
+/* about */
+.about{padding:110px 0}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:center}
+.cut{position:relative;background:linear-gradient(180deg,var(--grey),#E8EFF6);border-radius:16px;overflow:hidden;aspect-ratio:4/4.4;display:flex;align-items:flex-end;justify-content:center}
+.cut img{width:88%;height:auto;margin-bottom:-11%}
+.cut .tag{position:absolute;left:18px;top:18px;background:#fff;border-radius:8px;padding:10px 14px;font-size:.82rem;box-shadow:0 8px 24px -12px rgba(11,31,58,.35)}
+.cut .tag b{display:block;color:var(--navy);font-size:1.1rem}
+dl.facts{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:28px 0 0;border-top:1px solid var(--line)}
+dl.facts div{padding:16px 0;border-bottom:1px solid var(--line)}
+dl.facts div:nth-child(odd){padding-right:20px}
+dt{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+dd{margin:4px 0 0;color:var(--navy);font-weight:600}
+
+/* services */
+.svc{background:var(--grey);padding:100px 0}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s}
+.card:hover{box-shadow:0 24px 50px -30px rgba(11,31,58,.4);transform:translateY(-3px)}
+.card .ph{overflow:hidden;height:220px}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.card:hover .ph img{transform:scale(1.05)}
+.card-body{padding:30px;display:flex;flex-direction:column;flex:1}
+.card ol{list-style:none;counter-reset:p;padding:0;margin:4px 0 24px;border-top:1px solid var(--line)}
+.card ol li{counter-increment:p;padding:14px 0 14px 46px;border-bottom:1px solid var(--line);position:relative}
+.card ol li::before{content:"0" counter(p);position:absolute;left:0;top:14px;font-weight:700;color:var(--cyan);font-size:.9rem}
+.card ol li b{display:block;color:var(--navy)}
+.card ol li span{font-size:.9rem;color:var(--muted)}
+.card .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;font-size:.9rem}
+
+/* team */
+.team{padding:100px 0}
+.team-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:44px}
+.m{text-align:center}
+.m .av{border-radius:50%;overflow:hidden;width:100%;max-width:160px;margin:0 auto 14px;aspect-ratio:1;background:var(--grey)}
+.m .av img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.m:hover .av img{transform:scale(1.06)}
+.m h3{font-size:1rem;margin-bottom:2px}
+.m .role{font-size:.8rem;color:var(--muted);margin-bottom:8px;min-height:2.4em}
+.m a{display:block;font-size:.8rem;text-decoration:none;overflow-wrap:anywhere}
+.m a:hover{text-decoration:underline}
+
+/* reviews */
+.reviews{background:var(--grey);padding:100px 0}
+.rv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.rcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;margin:0}
+.rtop{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+.metric{font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);background:#E1F4FD;padding:5px 10px;border-radius:999px}
+.sub{font-size:.76rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:5px}
+.rcard blockquote{margin:0 0 18px;color:var(--ink);font-size:.98rem}
+.rcard figcaption{margin-top:auto;font-weight:600;color:var(--navy);font-size:.9rem;padding-top:14px;border-top:1px solid var(--line)}
+.rcard figcaption span{display:block;font-weight:400;color:var(--muted);font-size:.82rem}
+
+/* appraisal */
+.appraisal{padding:100px 0;background:#fff}
+.ap-box{display:grid;grid-template-columns:1fr 1.15fr;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(11,31,58,.45)}
+.ap-side{background:var(--navy);color:#fff;padding:48px}
+.ap-side h2{color:#fff}
+.ap-side .kicker{color:var(--cyan)}
+.ap-side p{color:#B9C8DA}
+.ap-steps{list-style:none;padding:0;margin:28px 0;display:grid;gap:14px}
+.ap-steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;color:#E3EAF2;font-size:.95rem}
+.ap-steps li b{width:34px;height:34px;border-radius:8px;background:rgba(0,173,239,.16);color:var(--cyan);display:grid;place-items:center;font-size:.85rem}
+.ap-contact{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;font-size:.92rem;line-height:1.8}
+.ap-contact a{color:#fff;text-decoration:none;font-weight:600}
+.ap-contact a:hover{text-decoration:underline}
+form.ap{padding:44px 48px;background:#fff}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field label em{font-style:normal;font-weight:400;color:var(--muted)}
+.field input,.field textarea{width:100%;padding:12px 14px;border:1.5px solid #C6D3E1;border-radius:8px;font:inherit;color:var(--navy);background:#fff}
+.field input:focus,.field textarea:focus{border-color:var(--blue);outline:3px solid rgba(0,173,239,.28);outline-offset:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form.ap .btn{width:100%;font-size:1rem}
+.note{font-size:.82rem;color:var(--muted);margin:12px 0 0}
+
+/* footer */
+footer.site{background:var(--deep);color:#AFC0D4;padding:60px 0 28px;font-size:.9rem}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.ft .logo{height:32px;width:auto;margin-bottom:16px}
+.harc{display:inline-block;background:#fff;border-radius:8px;padding:10px 14px;margin-top:6px}
+.harc img{height:22px;width:auto}
+footer.site h3{color:#fff;font-size:.95rem;margin-bottom:12px;letter-spacing:0}
+footer.site ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+footer.site a{color:#fff;text-decoration:none}
+footer.site a:hover{text-decoration:underline}
+.ft-b{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;font-size:.82rem}
+.allc{display:inline-block;margin-top:16px;font-size:.76rem;opacity:.75}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:1060px){
+  nav.main{display:none}
+  .menu-btn{display:inline-block}
+  nav.main.open{display:block;position:absolute;left:0;right:0;top:72px;background:#fff;border-bottom:1px solid var(--line);padding:10px 28px 18px}
+  nav.main.open ul{flex-direction:column;gap:0}
+  nav.main.open a{display:block;padding:11px 0;font-size:1.05rem}
+  .hero-grid,.rank-grid,.about-grid,.tl-head{grid-template-columns:1fr}
+  .hero-grid{gap:44px}
+  .aw-grid{grid-template-columns:1fr 1fr}
+  .aw{padding:26px 22px}
+  .aw:nth-child(odd){border-left:0;padding-left:0}
+  .aw:nth-child(n+3){border-top:1px solid var(--line)}
+  .team-grid{grid-template-columns:repeat(3,1fr);row-gap:36px}
+  .rv-grid{grid-template-columns:1fr 1fr}
+  .ap-box{grid-template-columns:1fr}
+  .about-grid{gap:44px}
+  .cut{max-width:440px}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .hdr{height:64px}
+  .hdr .logo img{height:25px}
+  nav.main.open{top:64px;padding:8px 18px 16px}
+  .hdr-cta .tel,.hdr-cta .btn{display:none}
+  .hero{padding:44px 0 60px}
+  .panel{padding:26px 22px}
+  .tile{padding:14px}
+  .tile b{font-size:1.5rem}
+  .aw-grid{grid-template-columns:1fr}
+  .aw,.aw:nth-child(odd){border-left:0;padding:20px 0;border-top:1px solid var(--line)}
+  .aw:first-child{border-top:0}
+  .timeline,.rank,.about,.svc,.team,.reviews,.appraisal{padding:68px 0}
+  .track-wrap{padding:28px 22px}
+  /* vertical timeline */
+  .track-h{display:grid;grid-template-columns:8px 1fr;gap:0 22px;position:relative}
+  .track{height:auto;width:8px;margin:0;grid-row:1;grid-column:1}
+  .track .fill{inset:0 0 auto 0;height:100%;width:100%;transform-origin:top;background:linear-gradient(180deg,var(--blue),var(--cyan))}
+  .js .track .fill{transform:scaleY(0)}
+  .js .track.in .fill{transform:scaleY(1)}
+  .ticks,.days{display:none}
+  .track .ms{display:none}
+  .ml::before{content:"";position:absolute;left:-37px;top:2px;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--blue);box-sizing:border-box;box-shadow:0 0 0 5px rgba(0,173,239,.15)}
+  .ml.sold::before{background:var(--navy);border-color:var(--cyan)}
+  .track-wrap{padding-left:26px}
+  .ms-labels{height:auto;margin:0;grid-row:1;grid-column:2;display:grid;gap:30px}
+  .ml,.ml.first,.ml.last{position:relative;left:auto!important;right:auto;transform:none;text-align:left;width:auto}
+  .rank-grid{gap:40px}
+  .dots{gap:4px}
+  .bar{grid-template-columns:104px 1fr auto;gap:10px;font-size:.82rem}
+  dl.facts{grid-template-columns:1fr}
+  dl.facts div:nth-child(odd){padding-right:0}
+  .svc-grid,.rv-grid{grid-template-columns:1fr}
+  .card .ph{height:180px}
+  .card-body{padding:24px}
+  .team-grid{grid-template-columns:1fr 1fr;gap:30px 14px}
+  .m .av{max-width:120px}
+  .ap-side,form.ap{padding:30px 22px}
+  .row2{grid-template-columns:1fr;gap:0}
+  .ft{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .rv{opacity:1;transform:none}
+  .js .track .fill,.js .bar .b i{transform:none}
+  .js .ms{opacity:1;transform:translate(-50%,-50%)}
+  .card:hover,.card:hover .ph img,.m:hover .av img{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap hdr">
+    <a class="logo" href="#top" aria-label="Team Karl Vermeulen — home"><img src="../../assets/img/logo-navy.png" alt="TEAM K — Team Karl Vermeulen" width="800" height="153"></a>
+    <nav class="main" id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="#sell">Sell</a></li>
+        <li><a href="#buy">Buy</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-cta">
+      <a class="tel num" href="tel:+64272044249">027 204 4249</a>
+      <a class="btn btn-primary" href="#appraisal">Free appraisal</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="rv">
+        <p class="kicker">Team Karl Vermeulen · Harcourts Howick</p>
+        <h1>Close to <span class="hl">$845 million</span> sold. Here's how we'd sell yours.</h1>
+        <p class="lead">Over 25 years, Karl and the team have helped 4,000+ East Auckland clients move on. The approach is simple: realistic pricing, strong exposure and weekly, transparent reporting — so you always know where your sale stands.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#appraisal">Get a free appraisal <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-line" href="#process">See a 10-day sale</a>
+        </div>
+        <div class="proof">
+          <img src="../../assets/team/karl.jpg" width="480" height="480" alt="">
+          <span><strong>Karl Vermeulen</strong> — Top Harcourts Consultant in Howick</span>
+        </div>
+      </div>
+      <aside class="panel rv" style="--d:.12s" aria-label="Track record at a glance">
+        <div class="panel-head"><span class="live">Track record</span><span>Harcourts Howick</span></div>
+        <div class="big num">$<span data-count="845">845</span><small>million</small></div>
+        <p class="big-cap">Close to $845 million in property sales</p>
+        <div class="tiles">
+          <div class="tile"><b class="num"><span data-count="25">25</span>+</b><span>years of experience</span></div>
+          <div class="tile"><b class="num"><span data-count="4000">4,000</span>+</b><span>delighted clients</span></div>
+          <div class="tile"><b class="num">Top 1%</b><span>of Harcourts consultants internationally</span></div>
+          <div class="tile"><b class="num"><span data-count="70">70</span>+</b><span>years combined team experience</span></div>
+        </div>
+        <p class="panel-foot">Top 5 Harcourts agents in New Zealand — 5th year in a row.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="awards" aria-label="Awards and credentials">
+    <div class="wrap aw-grid">
+      <div class="aw rv"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg><div><b>Top 1% internationally</b><span>Of Harcourts consultants — for almost 20 years running</span></div></div>
+      <div class="aw rv" style="--d:.08s"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg><div><b>Top 5 in New Zealand</b><span>Harcourts agents — 5th year in a row</span></div></div>
+      <div class="aw rv" style="--d:.16s"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><path d="m9.5 10 1.8 1.8L15 8"/></svg><div><b>Top Consultant in Howick</b><span>Awarded Top Harcourts Consultant in Howick</span></div></div>
+      <div class="aw rv" style="--d:.24s"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg><div><b>4,000+ clients</b><span>Delighted buyers and sellers across East Auckland</span></div></div>
+    </div>
+  </section>
+
+  <section class="timeline" id="process" aria-labelledby="tl-h">
+    <div class="wrap">
+      <div class="tl-head">
+        <div class="rv">
+          <p class="kicker">How a campaign runs</p>
+          <h2 id="tl-h">From listing to sold in 10 days</h2>
+          <p class="lead" style="margin:0">An example campaign timeline. Every home is different — but with the right preparation and exposure, momentum builds fast.</p>
+        </div>
+        <blockquote class="rv" style="--d:.1s">"I had my buyer within 10 days with the exposure Karl gave the property."<cite>Mrs Ferguson, Somerville Road, Somerville</cite></blockquote>
+      </div>
+      <div class="track-wrap rv">
+        <div class="track-h">
+          <div class="track" id="track" role="img" aria-label="Timeline: Day 1 listed and marketed, Day 4 open home, Day 8 offer, Day 10 sold">
+            <span class="fill"></span>
+            <span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="ms" style="left:0%"></span>
+            <span class="ms" style="left:33.33%"></span>
+            <span class="ms" style="left:77.78%"></span>
+            <span class="ms sold" style="left:100%"></span>
+          </div>
+          <div class="ms-labels">
+            <div class="ml first" style="left:0%"><span class="d num">Day 1</span><b>Listed &amp; marketed</b><span>Photography, online &amp; print launch</span></div>
+            <div class="ml" style="left:33.33%"><span class="d num">Day 4</span><b>Open home</b><span>Buyers through the door</span></div>
+            <div class="ml" style="left:77.78%"><span class="d num">Day 8</span><b>Offer</b><span>Negotiated in your interest</span></div>
+            <div class="ml last sold" style="left:100%"><span class="d num">Day 10</span><b>Sold</b><span>Contract signed</span></div>
+          </div>
+        </div>
+        <div class="days num" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+      </div>
+      <p class="tl-note">Example timeline for illustration. Results vary with every property and market.</p>
+    </div>
+  </section>
+
+  <section class="rank" aria-labelledby="rank-h">
+    <div class="wrap rank-grid">
+      <div class="rv">
+        <p class="kicker">Benchmarked globally</p>
+        <h2 id="rank-h">1 in every 100</h2>
+        <p>Of all Harcourts consultants internationally, Karl has ranked in the top 1% for almost 20 years running — and among the Top 5 Harcourts agents in New Zealand for the 5th year in a row.</p>
+        <p>Behind that ranking is experience you can measure: Karl's 25+ years, and 70+ years across the whole team.</p>
+      </div>
+      <div class="rv" style="--d:.12s">
+        <div class="dots" id="dots" role="img" aria-label="A grid of 100 squares with one highlighted, representing the top 1% of Harcourts consultants"></div>
+        <div class="dots-cap"><span class="k">Top 1% — Karl</span><span>Harcourts consultants internationally</span></div>
+        <div class="bars" id="bars" role="img" aria-label="Experience: Karl 25 plus years; team combined 70 plus years">
+          <div class="bar"><span>Karl's experience</span><span class="b"><i style="width:35.7%"></i></span><strong class="num">25+ yrs</strong></div>
+          <div class="bar"><span>Team combined</span><span class="b"><i style="width:100%"></i></span><strong class="num">70+ yrs</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div class="cut rv">
+        <img src="../../assets/img/karl-cutout.png" width="500" height="667" alt="Karl Vermeulen in a suit and Harcourts striped tie" loading="lazy" decoding="async">
+        <div class="tag">Born &amp; raised<b>Eastern Beaches</b></div>
+      </div>
+      <div class="rv" style="--d:.1s">
+        <p class="kicker">About Karl</p>
+        <h2 id="about-h">The agent behind the numbers</h2>
+        <p>Proudly born and raised in the Eastern Beaches, Karl is your trusted Howick-based real estate expert. His devotion to real estate has resulted in over 25 years of experience, and close to $845 million in property sales.</p>
+        <p>Tap into Karl's local expertise and strong connections in Howick and East Auckland. As one of Harcourts' leading global agents, Karl stands out for his stellar track record and dedicated customer base. Away from work, he lives on a Whitford lifestyle block with his family and dozens of rescue animals among 20,000 predominantly native trees.</p>
+        <dl class="facts">
+          <div><dt>Experience</dt><dd class="num">25+ years</dd></div>
+          <div><dt>Property sales</dt><dd class="num">Close to $845 million</dd></div>
+          <div><dt>Ranking</dt><dd>Top 1% Harcourts, internationally</dd></div>
+          <div><dt>Office</dt><dd>Harcourts Howick, 18 Fencible Drive</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="svc" aria-labelledby="svc-h">
+    <div class="wrap">
+      <p class="kicker">Services</p>
+      <h2 id="svc-h">Selling or buying in East Auckland</h2>
+      <p class="lead">Howick, Cockle Bay, Mellons Bay, Bucklands Beach, Eastern Beach, Somerville, Northpark, Pakuranga Heights, Botany Downs, Half Moon Bay and Whitford.</p>
+      <div class="svc-grid">
+        <article class="card rv" id="sell">
+          <div class="ph"><img src="../../assets/img/home-dusk.jpg" width="933" height="414" alt="Weatherboard home at dusk with its lights on — a recent sale" loading="lazy" decoding="async"></div>
+          <div class="card-body">
+            <h3>Selling</h3>
+            <p>Saying goodbye to a family home or parting ways with an investment property doesn't have to be daunting; it can be an opportunity for financial growth and new beginnings.</p>
+            <ol>
+              <li><b>Expertise that matters</b><span>70+ years of combined East Auckland experience</span></li>
+              <li><b>Tailored solutions</b><span>A campaign built around your property and timing</span></li>
+              <li><b>Transparent &amp; trustworthy</b><span>Weekly reporting so you always know where things stand</span></li>
+            </ol>
+            <div class="links">
+              <a class="btn btn-primary" href="#appraisal">Free appraisal</a>
+              <a href="https://one.harcourts.co.nz/images/Products/571cbf73-f8c6-4745-b743-05f016867ae4/files/Harcourts%20Selling%20Guide.pdf" target="_blank" rel="noopener">Harcourts Selling Guide</a>
+              <a href="https://www.settled.govt.nz/" target="_blank" rel="noopener">settled.govt.nz</a>
+            </div>
+          </div>
+        </article>
+        <article class="card rv" id="buy" style="--d:.1s">
+          <div class="ph"><img src="../../assets/img/living-room.jpg" width="1200" height="801" alt="Bright living room with a leather sofa and wooden floors" loading="lazy" decoding="async"></div>
+          <div class="card-body">
+            <h3>Buying</h3>
+            <p>Navigating the world of buying your first or next property? Congratulations! Let's get you armed with some expert advice.</p>
+            <ol>
+              <li><b>Local expertise</b><span>Street-level knowledge across East Auckland</span></li>
+              <li><b>Personalised support</b><span>Advice matched to your goals and budget</span></li>
+              <li><b>Smooth transactions</b><span>From first viewing through to settlement</span></li>
+            </ol>
+            <div class="links">
+              <a class="btn btn-line" href="https://harcourts.net/nz/office/howick/listings/buy?team-member=karl-vermeulen" target="_blank" rel="noopener">View current listings</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="team" id="team" aria-labelledby="team-h">
+    <div class="wrap">
+      <p class="kicker">The team</p>
+      <h2 id="team-h">Six people. 70+ years of combined experience.</h2>
+      <div class="team-grid">
+        <div class="m rv"><div class="av"><img src="../../assets/team/karl.jpg" width="480" height="480" alt="Karl Vermeulen" loading="lazy" decoding="async"></div><h3>Karl Vermeulen</h3><p class="role">Sales Consultant &amp; Team Leader</p><a class="num" href="tel:+64272044249">027 204 4249</a><a href="mailto:karl.vermeulen@harcourts.co.nz" aria-label="Email Karl (karl.vermeulen@harcourts.co.nz)">Email Karl</a></div>
+        <div class="m rv" style="--d:.06s"><div class="av"><img src="../../assets/team/bridget.jpg" width="480" height="480" alt="Bridget Bennett" loading="lazy" decoding="async"></div><h3>Bridget Bennett</h3><p class="role">Sales Consultant</p><a class="num" href="tel:+64272930772">027 2930 772</a><a href="mailto:bridget.bennett@harcourts.co.nz" aria-label="Email Bridget (bridget.bennett@harcourts.co.nz)">Email Bridget</a></div>
+        <div class="m rv" style="--d:.12s"><div class="av"><img src="../../assets/team/rosy.jpg" width="480" height="480" alt="Rosy Qiu" loading="lazy" decoding="async"></div><h3>Rosy Qiu</h3><p class="role">Sales Consultant</p><a class="num" href="tel:+64223388888">022 338 8888</a><a href="mailto:rosy.qiu@harcourts.co.nz" aria-label="Email Rosy (rosy.qiu@harcourts.co.nz)">Email Rosy</a></div>
+        <div class="m rv" style="--d:.18s"><div class="av"><img src="../../assets/team/james.jpg" width="480" height="480" alt="James Hu" loading="lazy" decoding="async"></div><h3>James Hu</h3><p class="role">Sales Consultant</p><a class="num" href="tel:+642102560725">021 025 60725</a><a href="mailto:james.hu@harcourts.co.nz" aria-label="Email James (james.hu@harcourts.co.nz)">Email James</a></div>
+        <div class="m rv" style="--d:.24s"><div class="av"><img src="../../assets/team/nyrelle.jpg" width="480" height="480" alt="Nyrelle Foss" loading="lazy" decoding="async"></div><h3>Nyrelle Foss</h3><p class="role">Sales Consultant</p><a class="num" href="tel:+64211263993">021 126 3993</a><a href="mailto:nyrelle.foss@harcourts.co.nz" aria-label="Email Nyrelle (nyrelle.foss@harcourts.co.nz)">Email Nyrelle</a></div>
+        <div class="m rv" style="--d:.3s"><div class="av"><img src="../../assets/team/georgia.jpg" width="480" height="480" alt="Georgia Ross" loading="lazy" decoding="async"></div><h3>Georgia Ross</h3><p class="role">Personal Assistant</p><a class="num" href="tel:+6495381032">09 538 1032</a><a href="mailto:georgia.ross@harcourts.co.nz" aria-label="Email Georgia (georgia.ross@harcourts.co.nz)">Email Georgia</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews" aria-labelledby="rev-h">
+    <div class="wrap">
+      <p class="kicker">Client feedback</p>
+      <h2 id="rev-h">Results in their words</h2>
+      <div class="rv-grid">
+        <figure class="rcard rv">
+          <div class="rtop"><span class="metric">Buyer in 10 days</span><span class="sub">Somerville</span></div>
+          <blockquote>"I had my buyer within 10 days with the exposure Karl gave the property. He dotted all the i's and crossed all the t's when it came to the contract. When I sell again, I will certainly be giving Karl a call."</blockquote>
+          <figcaption>Mrs Ferguson<span>Somerville Road, Somerville</span></figcaption>
+        </figure>
+        <figure class="rcard rv" style="--d:.08s">
+          <div class="rtop"><span class="metric">Recommended by 6 people</span><span class="sub">Northpark</span></div>
+          <blockquote>"Karl was recommended to us by 6 different people. We found Karl and his team very helpful &amp; very professional. Karl kept us well informed… The team went that extra mile to make our life less stressful."</blockquote>
+          <figcaption>Patrick &amp; Doris Hindle<span>Eastridge Court, Northpark</span></figcaption>
+        </figure>
+        <figure class="rcard rv" style="--d:.16s">
+          <div class="rtop"><span class="metric">Weekly reporting</span><span class="sub">Cockle Bay</span></div>
+          <blockquote>"Having a team working on the sale meant we had multiple touch points or people to seek advice when necessary. Karl was very open, delivered as promised i.e. weekly emails, phone calls, timing of ad approvals &amp; placements."</blockquote>
+          <figcaption>Brian &amp; Melissa Carr<span>Cockle Bay Road, Cockle Bay</span></figcaption>
+        </figure>
+        <figure class="rcard rv">
+          <div class="rtop"><span class="metric">Realistic pricing advice</span><span class="sub">Pakuranga Heights</span></div>
+          <blockquote>"Karl is very skilled at providing selling valuation estimations and thus managing the vendor's expectations… an excellent non aggressive manner which makes for a pleasant experience."</blockquote>
+          <figcaption>Andy &amp; Sarah Mitchell<span>Te Anau Place, Pakuranga Heights</span></figcaption>
+        </figure>
+        <figure class="rcard rv" style="--d:.08s">
+          <div class="rtop"><span class="metric">Stress-free process</span><span class="sub">Howick</span></div>
+          <blockquote>"Karl possesses a high level of integrity and offers intelligent knowledge of the market. The entire sales process has been stress free and highly professional."</blockquote>
+          <figcaption>Karen Shaw<span>Howick</span></figcaption>
+        </figure>
+        <figure class="rcard rv" style="--d:.16s">
+          <div class="rtop"><span class="metric">Team approach</span><span class="sub">Mellons Bay</span></div>
+          <blockquote>"At all times I felt Karl had my best interest in mind &amp; he communicated with me throughout the process. Karl &amp; Bridget worked exceptionally well as a team."</blockquote>
+          <figcaption>Vivienne Falloon<span>Pleasant Place, Mellons Bay</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="appraisal" id="appraisal" aria-labelledby="ap-h">
+    <div class="wrap">
+      <div class="ap-box rv">
+        <div class="ap-side" id="contact">
+          <p class="kicker">Free home appraisal</p>
+          <h2 id="ap-h">What's your home worth?</h2>
+          <p>Curious about your home's worth? Request a free home appraisal today — no strings attached, just expert guidance tailored to you. We'll be in touch within 48 hours.</p>
+          <ol class="ap-steps">
+            <li><b class="num">01</b><span>Send your details — it takes under a minute</span></li>
+            <li><b class="num">02</b><span>We're in touch within 48 hours</span></li>
+            <li><b class="num">03</b><span>Receive an honest appraisal, no strings attached</span></li>
+          </ol>
+          <div class="ap-contact">
+            <a class="num" href="tel:+64272044249">027 204 4249</a><br>
+            <a href="mailto:karl.vermeulen@harcourts.co.nz">karl.vermeulen@harcourts.co.nz</a><br>
+            18 Fencible Drive, Howick, Auckland 2014
+          </div>
+        </div>
+        <form class="ap" id="apform" novalidate>
+          <div class="row2">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
+          </div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-addr">Property address</label><input id="f-addr" name="address" type="text" autocomplete="street-address" required></div>
+          <div class="field"><label for="f-msg">Message <em>(optional)</em></label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+          <button class="btn btn-primary" type="submit">Request free appraisal <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="note">Submitting opens your email app with your details ready to send.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <img class="logo" src="../../assets/img/logo-white.png" width="800" height="153" alt="TEAM K — Team Karl Vermeulen" loading="lazy" decoding="async">
+        <p>Team Karl Vermeulen · Harcourts Howick</p>
+        <span class="harc"><img src="../../assets/img/harcourts-logo.png" width="350" height="42" alt="Harcourts — People First" loading="lazy" decoding="async"></span>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a class="num" href="tel:+64272044249">027 204 4249</a></li>
+          <li><a href="mailto:karl.vermeulen@harcourts.co.nz">karl.vermeulen@harcourts.co.nz</a></li>
+          <li>18 Fencible Drive, Howick, Auckland 2014</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#sell">Selling</a></li>
+          <li><a href="#buy">Buying</a></li>
+          <li><a href="https://harcourts.net/nz/office/howick/listings/buy?team-member=karl-vermeulen" target="_blank" rel="noopener">View current listings</a></li>
+          <li><a href="#appraisal">Free appraisal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-b"><span>© 2026 Team Karl Vermeulen</span><span>Harcourts Howick — licensed under the REAA 2008</span></div>
+    <a class="allc" href="../../index.html">← All concepts</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var dots=document.getElementById('dots');
+  for(var i=0;i<100;i++){var d=document.createElement('i');if(i===0)d.className='top';dots.appendChild(d);}
+  var b=document.querySelector('.menu-btn'),n=document.getElementById('mainnav');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Close':'Menu';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='Menu';}});
+  var h=document.querySelector('header.site');
+  var onS=function(){h.classList.toggle('scrolled',window.scrollY>8);};onS();window.addEventListener('scroll',onS,{passive:true});
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets=document.querySelectorAll('.rv,#track,#bars');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.1});
+    targets.forEach(function(el){io.observe(el);});
+    if(!reduce){
+      var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);
+        var el=e.target,end=+el.dataset.count,t0=null,dur=1600;
+        var step=function(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/dur),v=Math.round(end*(1-Math.pow(1-k,3)));el.textContent=v.toLocaleString('en-NZ');if(k<1)requestAnimationFrame(step);};
+        el.textContent='0';requestAnimationFrame(step);});},{threshold:.5});
+      document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);});
+    }
+  } else targets.forEach(function(el){el.classList.add('in');});
+  var f=document.getElementById('apform');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){f.reportValidity();return;}
+    var v=function(id){return document.getElementById(id).value.trim();};
+    var body='Name: '+v('f-name')+'\nPhone: '+v('f-phone')+'\nEmail: '+v('f-email')+'\nProperty address: '+v('f-addr')+'\n\nMessage:\n'+(v('f-msg')||'-');
+    location.href='mailto:karl.vermeulen@harcourts.co.nz?subject='+encodeURIComponent('Free appraisal request – '+v('f-addr'))+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
+<script src="../../assets/concepts.js" defer></script>
+</body>
+</html>
