@@ -71,8 +71,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;lett
 .hero-side p{font-size:1.02rem;color:#2c3a4f}
 .hero-side .actions{display:flex;flex-direction:column;align-items:flex-start;gap:22px;margin-top:28px}
 .hero-fig{margin:clamp(48px,6vw,80px) 0 0;position:relative}
-.hero-fig .img{overflow:hidden;margin-left:max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut)))}
-.hero-fig img{width:100%;height:clamp(320px,52vw,640px);object-fit:cover;object-position:center 45%;transform:scale(1.04);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
+.hero-fig .img{overflow:hidden;max-width:calc(var(--wrap) - 2 * var(--gut));margin:0 auto;margin-inline:max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut)))}
+.hero-fig img{width:100%;height:clamp(320px,40vw,500px);object-fit:cover;object-position:center 45%;transform:scale(1.04);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
 .loaded .hero-fig img{transform:none}
 .hero-fig figcaption{max-width:var(--wrap);margin:0 auto;padding:16px var(--gut) 0;display:flex;justify-content:flex-end;gap:16px;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted)}
 .hero-fig figcaption::before{content:"";width:48px;height:1px;background:var(--brass);align-self:center}
@@ -265,7 +265,7 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--cyan);box-shad
 }
 @media (max-width:600px){
   .hero-top span:last-child{display:none}
-  .hero-fig .img{margin-left:0}
+  .hero-fig .img{margin-inline:0;max-width:none}
   .hero-fig img{height:300px;object-position:48% center}
   .stats ul{grid-template-columns:1fr}
   .stats li{border-right:0!important;margin-right:0!important;padding:24px 0 20px;border-top:1px solid var(--rule)}
@@ -337,7 +337,7 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--cyan);box-shad
       </div>
     </div>
     <figure class="hero-fig">
-      <div class="img"><img src="../../assets/img/rangitoto-sunset-800.webp" srcset="../../assets/img/rangitoto-sunset-480.webp 480w, ../../assets/img/rangitoto-sunset-800.webp 800w, ../../assets/img/rangitoto-sunset-1200.webp 1200w, ../../assets/img/rangitoto-sunset-1500.webp 1500w" sizes="(max-width: 600px) 100vw, (max-width: 1100px) 97vw, 100vw" alt="Rangitoto Island silhouetted at sunset, seen across the water from the Eastern Beaches" width="1600" height="633" fetchpriority="high" decoding="async"></div>
+      <div class="img"><img src="../../assets/img/rangitoto-sunset-800.webp" srcset="../../assets/img/rangitoto-sunset-480.webp 480w, ../../assets/img/rangitoto-sunset-800.webp 800w, ../../assets/img/rangitoto-sunset-1200.webp 1200w, ../../assets/img/rangitoto-sunset-1500.webp 1500w" sizes="(max-width: 600px) 195vw, (max-width: 1100px) 102vw, 1264px" alt="Rangitoto Island silhouetted at sunset, seen across the water from the Eastern Beaches" width="1600" height="633" fetchpriority="high" decoding="async"></div>
       <figcaption>Rangitoto at dusk, from the Eastern Beaches</figcaption>
     </figure>
   </section>
@@ -361,7 +361,7 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--cyan);box-shad
       </div>
       <div class="about-grid">
         <figure class="about-fig r">
-          <div class="ph"><img src="../../assets/img/karl-howick-800.webp" srcset="../../assets/img/karl-howick-480.webp 480w, ../../assets/img/karl-howick-800.webp 800w, ../../assets/img/karl-howick-1070.webp 1070w" sizes="(max-width: 600px) 90vw, (max-width: 1100px) 92vw, 671px" alt="Karl Vermeulen in a dark suit and Harcourts tie, standing above Howick village" width="1070" height="800" loading="lazy" decoding="async"></div>
+          <div class="ph"><img src="../../assets/img/karl-howick-800.webp" srcset="../../assets/img/karl-howick-480.webp 480w, ../../assets/img/karl-howick-800.webp 800w, ../../assets/img/karl-howick-1070.webp 1070w" sizes="(max-width: 600px) 90vw, (max-width: 1100px) 93vw, 672px" alt="Karl Vermeulen in a dark suit and Harcourts tie, standing above Howick village" width="1070" height="800" loading="lazy" decoding="async"></div>
           <figcaption class="cap">Karl Vermeulen, above Howick village.</figcaption>
         </figure>
         <div class="about-txt r" style="--d:.15s">
@@ -414,7 +414,7 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--cyan);box-shad
           <p class="small-links">Further reading: <a href="https://one.harcourts.co.nz/images/Products/571cbf73-f8c6-4745-b743-05f016867ae4/files/Harcourts%20Selling%20Guide.pdf" target="_blank" rel="noopener">Harcourts Selling Guide</a> · <a href="https://www.settled.govt.nz" target="_blank" rel="noopener">settled.govt.nz</a></p>
         </div>
         <figure class="fig r" style="--d:.15s">
-          <div class="ph"><img src="../../assets/img/home-dusk-800.webp" srcset="../../assets/img/home-dusk-480.webp 480w, ../../assets/img/home-dusk-800.webp 800w, ../../assets/img/home-dusk-933.webp 933w" sizes="(max-width: 600px) 90vw, (max-width: 1100px) 92vw, 572px" alt="Weatherboard home at dusk with warm lights on inside" width="933" height="414" loading="lazy" decoding="async"></div>
+          <div class="ph"><img src="../../assets/img/home-dusk-800.webp" srcset="../../assets/img/home-dusk-480.webp 480w, ../../assets/img/home-dusk-800.webp 800w, ../../assets/img/home-dusk-933.webp 933w" sizes="(max-width: 600px) 152vw, (max-width: 1100px) 156vw, 967px" alt="Weatherboard home at dusk with warm lights on inside" width="933" height="414" loading="lazy" decoding="async"></div>
           <figcaption class="cap">A recent sale, photographed at dusk.</figcaption>
           <div class="tl">
             <span class="label">An example sale</span>
@@ -444,7 +444,7 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--cyan);box-shad
           <p class="small-links">Helpful: <a href="https://www.settled.govt.nz" target="_blank" rel="noopener">settled.govt.nz</a></p>
         </div>
         <figure class="fig r">
-          <div class="ph"><img src="../../assets/img/living-room-800.webp" srcset="../../assets/img/living-room-480.webp 480w, ../../assets/img/living-room-800.webp 800w, ../../assets/img/living-room-1200.webp 1200w" sizes="(max-width: 600px) 90vw, (max-width: 1100px) 92vw, 572px" alt="Bright living room with a leather sofa and wooden floors" width="1200" height="801" loading="lazy" decoding="async"></div>
+          <div class="ph"><img src="../../assets/img/living-room-800.webp" srcset="../../assets/img/living-room-480.webp 480w, ../../assets/img/living-room-800.webp 800w, ../../assets/img/living-room-1200.webp 1200w" sizes="(max-width: 600px) 108vw, (max-width: 1100px) 111vw, 687px" alt="Bright living room with a leather sofa and wooden floors" width="1200" height="801" loading="lazy" decoding="async"></div>
           <figcaption class="cap">Light, warmth and timber — the East Auckland living room.</figcaption>
         </figure>
       </article>

@@ -103,4 +103,19 @@
   var pad = parseFloat(getComputedStyle(last).paddingBottom) || 0;
   last.style.paddingBottom = (pad + 72) + 'px';
   document.body.appendChild(host);
+
+  // Phones: give small text links (phone numbers, emails, guide links) a ~40px tap area.
+  // An absolutely positioned ::after extends the hit box without taking any layout space.
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    var hs = document.createElement('style');
+    hs.textContent = '.tk-hit{position:relative}.tk-hit::after{content:"";position:absolute;left:0;right:0;top:calc(var(--tk-hit) * -1);bottom:calc(var(--tk-hit) * -1)}';
+    document.head.appendChild(hs);
+    var sel = 'a[href^="tel:"], a[href^="mailto:"], a[target="_blank"], a[href$="index.html"]';
+    Array.prototype.forEach.call(document.querySelectorAll(sel), function (a) {
+      var cs = getComputedStyle(a), h = a.getBoundingClientRect().height;
+      if (h === 0 || h >= 40 || cs.position !== 'static' || getComputedStyle(a, '::after').content !== 'none') return;
+      a.style.setProperty('--tk-hit', Math.ceil((40 - h) / 2) + 'px');
+      a.classList.add('tk-hit');
+    });
+  }
 })();
