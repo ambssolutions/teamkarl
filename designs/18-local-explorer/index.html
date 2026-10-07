@@ -72,7 +72,7 @@ nav.main a:hover{background:var(--g100)}
 .ex-top h1{font-size:clamp(28px,3.4vw,42px)}
 .ex-top p{color:var(--g600);max-width:60ch;margin-top:6px}
 .ex-top .acts{display:flex;gap:10px;flex-wrap:wrap}
-.app{display:grid;grid-template-columns:1fr 410px;background:#fff;border:1px solid var(--g200);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);height:clamp(520px,calc(100vh - 262px),720px)}
+.app{display:grid;grid-template-columns:1fr 410px;background:#fff;border:1px solid var(--g200);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);height:clamp(560px,calc(100vh - 200px),780px)}
 .mapbox{position:relative;background:var(--water);min-height:0}
 .mapbox svg.map{position:absolute;inset:0;width:100%;height:100%}
 .map-chip{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow)}
@@ -106,7 +106,7 @@ nav.main a:hover{background:var(--g100)}
 
 /* panel */
 .panel{border-left:1px solid var(--g200);display:flex;flex-direction:column;min-height:0}
-.panel-scroll{overflow:auto;padding:22px 24px 24px;flex:1}
+.panel-scroll{overflow:auto;padding:22px 24px 40px;flex:1;overscroll-behavior:contain;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 36px),transparent)}
 .p-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
 .p-head .pinic{width:42px;height:42px;border-radius:12px;background:#E6F6FD;display:grid;place-items:center;flex:none}
 .p-head .pinic svg{width:22px;height:22px;color:var(--blue)}
