@@ -287,6 +287,8 @@ html.intro .hero-media,html.intro .hero-copy,html.intro .scroll-cue{opacity:0}
 @media (max-width:520px){.ft-grid{grid-template-columns:1fr}.site-footer{padding-bottom:90px}}
 
 /* Scene indicator (desktop, motion only) */
+.scene-ind.off{opacity:0;pointer-events:none}
+.scene-ind{transition:opacity .3s}
 .scene-ind{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:90;display:none;flex-direction:column;align-items:center;gap:10px;font:500 .68rem/1 var(--sans);letter-spacing:.2em;color:var(--soft);pointer-events:none;mix-blend-mode:difference}
 .scene-ind .n{color:#fff;font-size:.8rem}
 .scene-ind .ln{width:1px;height:70px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
@@ -772,6 +774,16 @@ html.intro .hero-media,html.intro .hero-copy,html.intro .scroll-cue{opacity:0}
   window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
 })();
 </script>
+<script>
+/* Hide the right-edge scene counter while the sideways 10-day panels slide underneath it */
+window.addEventListener('load', function () { setTimeout(function () {
+  var el = document.querySelector('.story-pin'), ind = document.querySelector('.scene-ind');
+  if (!window.ScrollTrigger || !el || !ind) return;
+  ScrollTrigger.create({ trigger: el.closest('.pin-spacer') || el, start: 'top 85%', end: 'bottom 15%',
+    onToggle: function (st) { ind.classList.toggle('off', st.isActive); } });
+}, 50); });
+</script>
+<script src="../../assets/smooth.js" defer></script>
 <script src="../../assets/concepts.js" defer></script>
 </body>
 </html>

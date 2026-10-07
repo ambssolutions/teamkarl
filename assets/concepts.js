@@ -51,6 +51,7 @@
     '.menu a{display:flex;width:100%;box-sizing:border-box;height:auto;padding:9px 12px;border-radius:10px;justify-content:space-between;gap:16px}' +
     '.menu a[aria-current]{background:rgba(0,173,239,.18)}' +
     '.menu small{color:#9FB3CC;font-weight:400}' +
+    '.fav{width:34px;padding:0;justify-content:center}.fav svg{width:17px;height:17px}.fav[aria-pressed="true"]{color:#FFD23F}.fav[aria-pressed="true"] svg{fill:currentColor}' +
     '.menu hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:6px 4px}' +
     '@media (max-width:480px){.bar{left:50%;transform:translateX(-50%);bottom:12px}.label .sub{display:none}}' +
     '@media print{.bar{display:none}}' +
@@ -61,6 +62,7 @@
     '<span class="tag">' + String(i + 1).padStart(2, '0') + '</span> ' + cur[2] +
     '<span class="sub">&nbsp;&middot; ' + cur[3] + '</span> <span aria-hidden="true">&#9662;</span></button>' +
     '<a class="arrow" href="' + href(next) + '" aria-label="Next concept: ' + next[2] + '">&#8250;</a>' +
+    '<button type="button" class="fav" aria-pressed="false" aria-label="Add to shortlist" title="Shortlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 16.9l-5.25 2.75 1-5.85L3.5 9.7l5.9-.9z"/></svg></button>' +
     '<div class="menu" role="menu">' +
     '<a role="menuitem" href="/">All concepts <small>gallery</small></a><hr>' +
     CONCEPTS.map(function (c, k) {
@@ -69,7 +71,26 @@
     }).join('') +
     '</div></nav>';
 
-  var btn = root.querySelector('button'), menu = root.querySelector('.menu');
+  var btn = root.querySelector('button.label'), menu = root.querySelector('.menu');
+
+  // Shortlist toggle, shared with the gallery via localStorage
+  var KEY = 'teamk-shortlist', fav = root.querySelector('.fav');
+  function getList() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
+  function paintFav() {
+    var on = getList().indexOf(cur[0]) > -1;
+    fav.setAttribute('aria-pressed', on);
+    fav.setAttribute('aria-label', (on ? 'Remove ' : 'Add ') + cur[2] + (on ? ' from' : ' to') + ' shortlist');
+    fav.title = on ? 'Shortlisted' : 'Add to shortlist';
+  }
+  fav.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var l = getList(), k = l.indexOf(cur[0]);
+    if (k > -1) l.splice(k, 1); else l.push(cur[0]);
+    try { localStorage.setItem(KEY, JSON.stringify(l)); } catch (err) {}
+    paintFav();
+  });
+  window.addEventListener('storage', function (e) { if (e.key === KEY) paintFav(); });
+  paintFav();
   function setOpen(o) { menu.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); }
   btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!menu.classList.contains('open')); });
   document.addEventListener('click', function () { setOpen(false); });
