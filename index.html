@@ -44,6 +44,16 @@
   .tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:999px;background:#EAF6FD;color:var(--blue)}
   .tag.motion{background:#F1F3F6;color:var(--grey)}
   .card[hidden]{display:none}
+  .acts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .acts .go{margin-top:0}
+  .devlink{position:relative;z-index:3;display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--navy);text-decoration:none;font-size:.88rem;font-weight:500}
+  .devlink:hover{border-color:var(--navy)}
+  .devlink svg{width:17px;height:17px}
+  .hero-cta{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:12px 22px;border-radius:999px;background:var(--cyan);color:var(--navy);font-weight:600;text-decoration:none}
+  .hero-cta:hover{background:#fff}
+  .hero-cta svg{width:20px;height:20px}
+  noscript ul{max-width:760px;margin:0 auto;padding:0 20px 40px;columns:2;line-height:2}
+  noscript a{color:var(--blue)}
   .rec{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:var(--cyan);color:var(--navy);font-size:.74rem;font-weight:600;letter-spacing:.04em;padding:5px 11px;border-radius:999px;box-shadow:0 6px 16px -6px rgba(0,0,0,.35)}
   .why{font-size:.84rem;color:var(--blue);font-weight:500;margin:0}
   .star{position:absolute;top:10px;right:10px;z-index:3;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:rgba(255,255,255,.94);color:var(--navy);box-shadow:0 6px 18px -6px rgba(11,31,58,.45);transition:transform .15s,background .15s}
@@ -88,11 +98,13 @@
   <img src="assets/img/logo-white-400.webp" srcset="assets/img/logo-white-400.webp 400w, assets/img/logo-white-800.webp 800w" sizes="210px" alt="Team K" width="800" height="153">
   <h1>Homepage concepts for Team Karl Vermeulen</h1>
   <p>Eighteen design directions, all built with the Team K brand, the real team and real client reviews. Choose a style below to see the full design. You can switch between styles at any time using the bar at the bottom of each page.</p>
+  <a class="hero-cta" href="preview/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M1 17h16"/><rect x="17" y="8" width="6" height="11" rx="1.2"/></svg>Preview on laptop, tablet &amp; mobile</a>
 </header>
 <main>
   <div id="banner"></div>
   <div class="filters" id="filters" role="group" aria-label="Filter concepts"></div>
   <div class="grid" id="grid"></div>
+  <noscript><ul><li><a href="designs/01-classic-harcourts/">01 Classic — Corporate</a></li><li><a href="designs/02-editorial-luxury/">02 Luxury — Editorial</a></li><li><a href="designs/03-coastal-eastern-beaches/">03 Lifestyle — Coastal</a></li><li><a href="designs/04-bold-navy/">04 Bold — Dark Premium</a></li><li><a href="designs/05-personal-karl/">05 Personal — Storytelling</a></li><li><a href="designs/06-results-data/">06 Results — Data-driven</a></li><li><a href="designs/07-minimal-swiss/">07 Minimal — Swiss Grid</a></li><li><a href="designs/08-warm-community/">08 Friendly — Community</a></li><li><a href="designs/09-split-sell-buy/">09 Interactive — Split Screen</a></li><li><a href="designs/10-bento-modern/">10 Modern — Bento Grid</a></li><li><a href="designs/11-original-demo/">11 Original — First Demo</a></li><li><a href="designs/12-animated-motion/">12 Animated — Motion-rich</a></li><li><a href="designs/13-cinematic-scroll/">13 Cinematic — Scroll Story</a></li><li><a href="designs/14-kinetic-type/">14 Kinetic — Interactive</a></li><li><a href="designs/15-glass-aurora/">15 Glass — Aurora</a></li><li><a href="designs/16-brutalist-blocks/">16 Brutalist — Bold Blocks</a></li><li><a href="designs/17-illustrated-playful/">17 Illustrated — Playful</a></li><li><a href="designs/18-local-explorer/">18 Local — Suburb Explorer</a></li></ul></noscript>
 </main>
 <div class="tray" id="tray" role="region" aria-label="Your shortlist" aria-live="polite"></div>
 <footer>Prepared for Team Karl Vermeulen · Harcourts Howick <img src="assets/img/harcourts-logo-350.webp" alt="Harcourts" width="350" height="42"></footer>
@@ -149,7 +161,8 @@ document.getElementById('grid').innerHTML = concepts.map(([slug,type,style,motio
       <div class="tags"><span class="tag">${type}</span><span class="tag motion">${motion}</span></div>
       ${RECOMMENDED[slug] ? `<p class="why">Why: ${RECOMMENDED[slug]}</p>` : ''}
       <p>${desc}</p>
-      <a class="go" href="designs/${slug}/" aria-label="Open concept ${i+1}: ${type} — ${style}">Open ${type} <span aria-hidden="true">→</span></a>
+      <div class="acts"><a class="go" href="designs/${slug}/" aria-label="Open concept ${i+1}: ${type} — ${style}">Open ${type} <span aria-hidden="true">→</span></a>
+      <a class="devlink" href="preview/?c=${num(slug)}" aria-label="Preview ${type} on laptop, tablet and mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M1 17h16"/><rect x="17" y="8" width="6" height="11" rx="1.2"/></svg>Devices</a></div>
     </div>
   </article>`).join('') + '<p class="empty" id="empty" hidden></p>';
 

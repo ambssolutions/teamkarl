@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Team K — Device Preview</title>
+<meta name="description" content="Preview the Team Karl Vermeulen homepage concepts on laptop, tablet and mobile.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#071428">
+<link rel="icon" href="/assets/img/logo-navy-400.webp">
+<style>
+  :root{--navy:#0B1F3A;--deep:#071428;--cyan:#00ADEF;--blue:#0077C8;--ink:#E8EEF6;--mute:#9FB3CC;--line:rgba(255,255,255,.12);--bar:64px}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--deep);color:var(--ink);font:500 14px/1.3 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow:hidden}
+  button,select,a{font:inherit;color:inherit}
+  a{text-decoration:none}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+
+  /* ---------- Toolbar ---------- */
+  .bar{position:fixed;inset:0 0 auto 0;height:var(--bar);display:flex;align-items:center;gap:12px;padding:0 16px;background:rgba(7,20,40,.96);border-bottom:1px solid var(--line);z-index:10}
+  .logo{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+  .logo img{height:22px;width:auto;display:block}
+  .logo span{color:var(--mute);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  .grow{flex:1 1 auto}
+  .group{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:4px}
+  .ibtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;min-width:36px;padding:0 12px;border:0;border-radius:999px;background:transparent;cursor:pointer;white-space:nowrap}
+  .ibtn:hover{background:rgba(255,255,255,.1)}
+  .ibtn svg{width:18px;height:18px;flex:0 0 auto}
+  .ibtn[aria-pressed="true"]{background:var(--cyan);color:var(--deep)}
+  .star[aria-pressed="true"]{background:transparent;color:#FFD23F}
+  .star[aria-pressed="true"] svg{fill:currentColor}
+  .pick{position:relative;display:flex;align-items:center}
+  .pick select{appearance:none;-webkit-appearance:none;height:36px;max-width:340px;padding:0 34px 0 14px;border:0;border-radius:999px;background:transparent;cursor:pointer;font-weight:600}
+  .pick select option{color:#0B1F3A}
+  .pick::after{content:"";position:absolute;right:14px;top:50%;width:7px;height:7px;border:solid var(--ink);border-width:0 2px 2px 0;transform:translate(0,-70%) rotate(45deg);pointer-events:none}
+  .meta{color:var(--mute);font-size:12px;white-space:nowrap}
+  .meta b{color:var(--cyan);font-weight:600}
+  .lbl{display:inline}
+
+  /* ---------- Stage + devices ---------- */
+  .stage{position:fixed;inset:var(--bar) 0 0 0;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:radial-gradient(1200px 600px at 50% 0%,rgba(0,119,200,.25),transparent 70%),var(--deep)}
+  .fit{position:relative;flex:0 0 auto}
+  .device{position:absolute;left:0;top:0;transform-origin:0 0;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .shell{position:relative;background:#0d1117;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.08)}
+  .screen{position:relative;overflow:hidden;background:#fff}
+  .screen iframe{display:block;border:0;background:#fff}
+  .status{display:none;height:50px;padding:0 30px 0 34px;align-items:flex-end;justify-content:space-between;padding-bottom:10px;background:#fff;color:#000;font:600 15px/1 -apple-system,system-ui,sans-serif}
+  .status .ic{display:flex;gap:6px;align-items:center}
+  .status svg{height:12px;width:auto;display:block}
+  .mobile .status{display:flex}
+  .loading{position:absolute;inset:0;display:grid;place-items:center;background:#F5F8FB;color:#0B1F3A;font-size:28px;transition:opacity .25s;pointer-events:none}
+  .loading.off{opacity:0}
+  .spin{width:56px;height:56px;border-radius:50%;border:5px solid #D9E6F2;border-top-color:var(--blue);animation:sp .8s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+
+  /* laptop */
+  .laptop .shell{padding:22px 22px 26px;border-radius:22px 22px 6px 6px}
+  .laptop .shell::before{content:"";position:absolute;top:9px;left:50%;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#2a313c}
+  .laptop .screen{border-radius:4px}
+  .laptop .base{height:26px;margin:0 -110px;background:linear-gradient(#cfd6df,#9aa4b1);border-radius:0 0 26px 26px;position:relative;box-shadow:0 30px 50px -20px rgba(0,0,0,.6)}
+  .laptop .base::before{content:"";position:absolute;top:0;left:50%;width:220px;height:10px;margin-left:-110px;background:#8b95a3;border-radius:0 0 12px 12px}
+  /* tablet */
+  .tablet .shell{padding:28px;border-radius:44px}
+  .tablet .screen{border-radius:16px}
+  /* mobile */
+  .mobile .shell{padding:14px;border-radius:58px}
+  .mobile .screen{border-radius:44px}
+  .mobile .island{position:absolute;top:26px;left:50%;width:120px;height:34px;margin-left:-60px;border-radius:20px;background:#000;z-index:3;pointer-events:none}
+  .tablet .island,.laptop .island{display:none}
+  .laptop .base{display:block}.tablet .base,.mobile .base{display:none}
+
+  .hint{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);color:var(--mute);font-size:12px;background:rgba(7,20,40,.8);padding:6px 12px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;z-index:5}
+  .hint kbd{font:inherit;color:var(--ink);background:rgba(255,255,255,.1);border-radius:4px;padding:1px 6px}
+
+  /* ---------- Small screens ---------- */
+  @media (max-width:1080px){.meta{display:none}}
+  @media (max-width:860px){
+    :root{--bar:112px}
+    .bar{flex-wrap:wrap;height:auto;min-height:var(--bar);padding:8px 10px;gap:8px;align-content:center}
+    .logo span,.lbl,.grow,.hint{display:none}
+    .row2{order:3;flex:1 1 100%;display:flex;gap:8px;justify-content:space-between}
+    .pickgroup{flex:1 1 auto;min-width:0}
+    .pick{flex:1 1 auto;min-width:0}
+    .pick select{max-width:none;width:100%}
+  }
+  @media (min-width:861px){.row2{display:contents}}
+  @media (prefers-reduced-motion:reduce){.device{transition:none}.spin{animation:none}}
+</style>
+</head>
+<body>
+<header class="bar" role="toolbar" aria-label="Preview controls">
+  <a class="logo" href="/" title="All concepts"><img src="/assets/img/logo-white-400.webp" alt="Team K" width="400" height="76"><span>Device preview</span></a>
+  <div class="grow"></div>
+  <div class="row2">
+    <div class="group pickgroup">
+      <button class="ibtn" id="prev" type="button" aria-label="Previous concept" title="Previous (←)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <label class="pick"><span class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Concept</span><select id="concept"></select></label>
+      <button class="ibtn" id="next" type="button" aria-label="Next concept" title="Next (→)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="group" role="group" aria-label="Device">
+      <button class="ibtn" type="button" data-d="laptop" title="Laptop (1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg><span class="lbl">Laptop</span></button>
+      <button class="ibtn" type="button" data-d="tablet" title="Tablet (2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M11 18.5h2"/></svg><span class="lbl">Tablet</span></button>
+      <button class="ibtn" type="button" data-d="mobile" title="Mobile (3)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span class="lbl">Mobile</span></button>
+    </div>
+  </div>
+  <span class="meta" id="meta"></span>
+  <div class="group">
+    <button class="ibtn star" id="star" type="button" aria-pressed="false" aria-label="Add to shortlist" title="Shortlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 16.9l-5.25 2.75 1-5.85L3.5 9.7l5.9-.9z"/></svg></button>
+    <a class="ibtn" id="open" href="#" target="_blank" rel="noopener" title="Open full page in a new tab" aria-label="Open full page in a new tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+    <a class="ibtn" href="/" title="All concepts" aria-label="All concepts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
+  </div>
+</header>
+
+<main class="stage" id="stage">
+  <div class="fit" id="fit">
+    <div class="device laptop" id="device">
+      <div class="shell"><div class="island"></div>
+        <div class="screen" id="screen">
+          <div class="status" aria-hidden="true"><span>9:41</span><span class="ic"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.6a10 10 0 0 1 14 0z"/></svg><svg viewBox="0 0 27 12" fill="none" stroke="#000"><rect x=".5" y=".5" width="23" height="11" rx="3"/><rect x="2.5" y="2.5" width="17" height="7" rx="1.5" fill="#000" stroke="none"/><path d="M25.5 4v4" stroke-width="1.5"/></svg></span></div>
+          <iframe id="frame" title="Concept preview" loading="eager"></iframe>
+          <div class="loading" id="loading" aria-hidden="true"><div class="spin"></div></div>
+        </div>
+      </div>
+      <div class="base"></div>
+    </div>
+  </div>
+</main>
+<p class="hint" id="hint">Scroll inside the screen to explore · <kbd>←</kbd> <kbd>→</kbd> change concept · <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> change device</p>
+
+<noscript><p style="position:fixed;inset:auto 0 0 0;padding:16px;background:#fff;color:#0B1F3A;text-align:center">The device preview needs JavaScript. <a href="/" style="color:#0077C8">See all concepts</a> instead.</p></noscript>
+
+<script src="/assets/concepts-data.js"></script>
+<script>
+(function () {
+  var C = window.TK_CONCEPTS || [];
+  var DEVICES = {
+    laptop: { w: 1440, h: 900, name: 'Laptop' },
+    tablet: { w: 820, h: 1180, name: 'Tablet' },
+    mobile: { w: 390, h: 844, name: 'Mobile' }
+  };
+  var KEY = 'teamk-shortlist';
+  var $ = function (id) { return document.getElementById(id); };
+  var sel = $('concept'), frame = $('frame'), device = $('device'), fit = $('fit'), loading = $('loading');
+
+  // Concept list: recommended ones marked with a star
+  sel.innerHTML = C.map(function (c, i) {
+    return '<option value="' + i + '">' + c.slug.slice(0, 2) + '  ' + c.type + ' — ' + c.style + (c.why ? '  ★' : '') + '</option>';
+  }).join('');
+
+  // Start from the URL (?c=05&d=tablet), else sensible defaults
+  var q = new URLSearchParams(location.search);
+  var idx = Math.max(0, C.findIndex(function (c) { return c.slug.slice(0, 2) === (q.get('c') || '').padStart(2, '0') || c.short === q.get('c'); }));
+  var dev = DEVICES[q.get('d')] ? q.get('d') : (innerWidth < 700 ? 'mobile' : 'laptop');
+
+  function getList() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
+  function paintStar() {
+    var on = getList().indexOf(C[idx].slug) > -1, b = $('star');
+    b.setAttribute('aria-pressed', on);
+    b.setAttribute('aria-label', (on ? 'Remove from' : 'Add to') + ' shortlist');
+    b.title = on ? 'Shortlisted' : 'Add to shortlist';
+  }
+  function syncUrl() {
+    var u = location.pathname + '?c=' + C[idx].slug.slice(0, 2) + '&d=' + dev;
+    try { history.replaceState(null, '', u); } catch (e) {}
+  }
+
+  function layout() {
+    var d = DEVICES[dev];
+    var shell = device.querySelector('.shell');
+    // native outer size of the device (screen + bezels + laptop base)
+    var cs = getComputedStyle(shell);
+    var padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    var padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+    var extraW = dev === 'laptop' ? 220 : 0, baseH = dev === 'laptop' ? 26 : 0;
+    var W = d.w + padX + extraW, H = d.h + padY + baseH;
+    var stage = $('stage').getBoundingClientRect();
+    var room = innerWidth < 860 ? 16 : 48;
+    var s = Math.min((stage.width - room) / W, (stage.height - room - (innerWidth < 860 ? 0 : 36)) / H, 1);
+    fit.style.width = Math.floor(W * s) + 'px';
+    fit.style.height = Math.floor(H * s) + 'px';
+    device.style.transform = 'translate(' + (extraW / 2) * s + 'px,0) scale(' + s + ')';
+  }
+
+  function show(newIdx, newDev) {
+    var changedPage = newIdx !== undefined && newIdx !== idx;
+    if (newIdx !== undefined) idx = (newIdx + C.length) % C.length;
+    if (newDev) dev = newDev;
+    var c = C[idx], d = DEVICES[dev];
+    sel.value = String(idx);
+    device.className = 'device ' + dev;
+    $('screen').style.width = d.w + 'px';
+    $('screen').style.height = d.h + 'px';
+    // Phones show a status bar above the page, so the page itself gets the rest of the screen
+    var statusH = dev === 'mobile' ? 50 : 0;
+    frame.width = d.w; frame.height = d.h - statusH;
+    var src = '/designs/' + c.slug + '/?embed=1';
+    if (frame.getAttribute('src') !== src || changedPage) { loading.classList.remove('off'); frame.setAttribute('src', src); }
+    frame.title = c.type + ' — ' + c.style + ' on ' + d.name;
+    $('open').href = '/designs/' + c.slug + '/';
+    $('meta').innerHTML = '<b>' + c.type + '</b> · ' + c.motion + (c.why ? ' · ★ Recommended' : '');
+    document.querySelectorAll('[data-d]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.d === dev); });
+    document.title = c.type + ' — ' + c.style + ' · ' + d.name + ' · Team K preview';
+    paintStar(); syncUrl(); layout();
+  }
+
+  frame.addEventListener('load', function () { setTimeout(function () { loading.classList.add('off'); }, 150); });
+  sel.addEventListener('change', function () { show(+sel.value); });
+  $('prev').addEventListener('click', function () { show(idx - 1); });
+  $('next').addEventListener('click', function () { show(idx + 1); });
+  document.querySelectorAll('[data-d]').forEach(function (b) { b.addEventListener('click', function () { show(undefined, b.dataset.d); }); });
+  $('star').addEventListener('click', function () {
+    var l = getList(), k = l.indexOf(C[idx].slug);
+    if (k > -1) l.splice(k, 1); else l.push(C[idx].slug);
+    try { localStorage.setItem(KEY, JSON.stringify(l)); } catch (e) {}
+    paintStar();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.target === sel || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+    else if (e.key === '1') show(undefined, 'laptop');
+    else if (e.key === '2') show(undefined, 'tablet');
+    else if (e.key === '3') show(undefined, 'mobile');
+  });
+  window.addEventListener('resize', layout);
+  window.addEventListener('storage', function (e) { if (e.key === KEY) paintStar(); });
+  show(idx, dev);
+})();
+</script>
+</body>
+</html>
