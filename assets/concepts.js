@@ -29,6 +29,8 @@
   var prev = CONCEPTS[(i + CONCEPTS.length - 1) % CONCEPTS.length];
   var next = CONCEPTS[(i + 1) % CONCEPTS.length];
   var cur = CONCEPTS[i];
+  // Inside the device preview (an iframe) the preview page provides its own controls.
+  var EMBED = window.self !== window.top || /[?&]embed=1/.test(location.search);
 
   var host = document.createElement('div');
   host.setAttribute('data-concept-switcher', '');
@@ -51,6 +53,7 @@
     '.menu a{display:flex;width:100%;box-sizing:border-box;height:auto;padding:9px 12px;border-radius:10px;justify-content:space-between;gap:16px}' +
     '.menu a[aria-current]{background:rgba(0,173,239,.18)}' +
     '.menu small{color:#9FB3CC;font-weight:400}' +
+    '.dev svg{width:18px;height:18px}' +
     '.fav{width:34px;padding:0;justify-content:center}.fav svg{width:17px;height:17px}.fav[aria-pressed="true"]{color:#FFD23F}.fav[aria-pressed="true"] svg{fill:currentColor}' +
     '.menu hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:6px 4px}' +
     '@media (max-width:480px){.bar{left:50%;transform:translateX(-50%);bottom:12px}.label .sub{display:none}}' +
@@ -62,6 +65,7 @@
     '<span class="tag">' + String(i + 1).padStart(2, '0') + '</span> ' + cur[2] +
     '<span class="sub">&nbsp;&middot; ' + cur[3] + '</span> <span aria-hidden="true">&#9662;</span></button>' +
     '<a class="arrow" href="' + href(next) + '" aria-label="Next concept: ' + next[2] + '">&#8250;</a>' +
+    '<a class="arrow dev" href="/preview/?c=' + cur[0].slice(0, 2) + '" aria-label="Preview on laptop, tablet and mobile" title="Preview on devices"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M1 17h16"/><rect x="17" y="8" width="6" height="11" rx="1.2"/></svg></a>' +
     '<button type="button" class="fav" aria-pressed="false" aria-label="Add to shortlist" title="Shortlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 16.9l-5.25 2.75 1-5.85L3.5 9.7l5.9-.9z"/></svg></button>' +
     '<div class="menu" role="menu">' +
     '<a role="menuitem" href="/">All concepts <small>gallery</small></a><hr>' +
@@ -99,10 +103,12 @@
   // Leave room at the end of the page so the floating bar never covers footer content:
   // extend the last footer (keeping its background) rather than adding a bare strip.
   var footers = document.querySelectorAll('footer');
-  var last = footers[footers.length - 1] || document.body;
+  var last = EMBED ? null : (footers[footers.length - 1] || document.body);
+  if (last) {
   var pad = parseFloat(getComputedStyle(last).paddingBottom) || 0;
   last.style.paddingBottom = (pad + 72) + 'px';
   document.body.appendChild(host);
+  }
 
   // Phones: give small text links (phone numbers, emails, guide links) a ~40px tap area.
   // An absolutely positioned ::after extends the hit box without taking any layout space.

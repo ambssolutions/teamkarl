@@ -6,7 +6,7 @@
   if (!window.matchMedia('(pointer: fine)').matches) return;
 
   var s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js';
+  s.src = '/assets/vendor/lenis.min.js';
   s.async = true;
   s.onload = function () {
     if (!window.Lenis) return;
