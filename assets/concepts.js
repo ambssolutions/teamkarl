@@ -56,11 +56,11 @@
     '.views{display:inline-flex;gap:2px;margin:0 2px;padding:2px;border-radius:999px;background:rgba(255,255,255,.08)}' +
     '.vbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:32px;height:30px;border-radius:999px;color:#fff}' +
     '.vbtn:hover{background:rgba(255,255,255,.14)}.vbtn:focus-visible{outline:2px solid #00ADEF;outline-offset:1px}' +
-    '.vbtn.on{background:#00ADEF;color:#071428;cursor:default}' +
+    '' +
     '.vbtn svg{width:17px;height:17px}' +
     '.fav{width:34px;padding:0;justify-content:center}.fav svg{width:17px;height:17px}.fav[aria-pressed="true"]{color:#FFD23F}.fav[aria-pressed="true"] svg{fill:currentColor}' +
     '.menu hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:6px 4px}' +
-    '@media (max-width:480px){.bar{left:50%;transform:translateX(-50%);bottom:12px}.label .sub{display:none}.v-laptop{display:none!important}}' +
+    '@media (max-width:480px){.bar{left:50%;transform:translateX(-50%);bottom:12px}.label .sub{display:none}}' +
     '@media print{.bar{display:none}}' +
     '</style>' +
     '<nav class="bar" aria-label="Design concepts">' +
@@ -70,7 +70,6 @@
     '<span class="sub">&nbsp;&middot; ' + cur[3] + '</span> <span aria-hidden="true">&#9662;</span></button>' +
     '<a class="arrow" href="' + href(next) + '" aria-label="Next concept: ' + next[2] + '">&#8250;</a>' +
     '<span class="views" role="group" aria-label="View as">' +
-    '<span class="vbtn on v-laptop" aria-current="true" aria-label="View as laptop (current)" title="View as laptop (current)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span>' +
     '<a class="vbtn v-tablet" href="/preview/?c=' + cur[0].slice(0, 2) + '&d=tablet" aria-label="View as tablet" title="View as tablet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M11 18.5h2"/></svg></a>' +
     '<a class="vbtn v-mobile" href="/preview/?c=' + cur[0].slice(0, 2) + '&d=mobile" aria-label="View as mobile" title="View as mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></a>' +
     '</span>' +
