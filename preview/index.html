@@ -38,14 +38,14 @@
   .lbl{display:inline}
 
   /* ---------- Stage + devices ---------- */
-  .stage{position:fixed;inset:var(--bar) 0 0 0;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  .stage{position:fixed;inset:var(--bar) 0 0 0;display:flex;align-items:center;justify-content:center;padding-bottom:56px;overflow:hidden;
     background:radial-gradient(1200px 600px at 50% 0%,rgba(0,119,200,.25),transparent 70%),var(--deep)}
   .fit{position:relative;flex:0 0 auto}
   .device{position:absolute;left:0;top:0;transform-origin:0 0;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
   .shell{position:relative;background:#0d1117;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.08)}
   .screen{position:relative;overflow:hidden;background:#fff}
   .screen iframe{display:block;border:0;background:#fff}
-  .status{display:none;height:50px;padding:0 30px 0 34px;align-items:flex-end;justify-content:space-between;padding-bottom:10px;background:#fff;color:#000;font:600 15px/1 -apple-system,system-ui,sans-serif}
+  .status{display:none;height:38px;padding:0 26px 0 30px;align-items:center;justify-content:space-between;background:#fff;color:#000;font:600 15px/1 -apple-system,system-ui,sans-serif}
   .status .ic{display:flex;gap:6px;align-items:center}
   .status svg{height:12px;width:auto;display:block}
   .mobile .status{display:flex}
@@ -64,10 +64,8 @@
   .tablet .shell{padding:28px;border-radius:44px}
   .tablet .screen{border-radius:16px}
   /* mobile */
-  .mobile .shell{padding:14px;border-radius:58px}
-  .mobile .screen{border-radius:44px}
-  .mobile .island{position:absolute;top:26px;left:50%;width:120px;height:34px;margin-left:-60px;border-radius:20px;background:#000;z-index:3;pointer-events:none}
-  .tablet .island,.laptop .island{display:none}
+  .mobile .shell{padding:12px;border-radius:50px}
+  .mobile .screen{border-radius:38px}
   .laptop .base{display:block}.tablet .base,.mobile .base{display:none}
 
   .hint{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);color:var(--mute);font-size:12px;background:rgba(7,20,40,.8);padding:6px 12px;border-radius:999px;border:1px solid var(--line);white-space:nowrap;z-index:5}
@@ -76,6 +74,7 @@
   /* ---------- Small screens ---------- */
   @media (max-width:1080px){.meta{display:none}}
   @media (max-width:860px){
+    .stage{padding-bottom:0}
     :root{--bar:112px}
     .bar{flex-wrap:wrap;height:auto;min-height:var(--bar);padding:8px 10px;gap:8px;align-content:center}
     .logo span,.lbl,.grow,.hint{display:none}
@@ -115,7 +114,7 @@
 <main class="stage" id="stage">
   <div class="fit" id="fit">
     <div class="device laptop" id="device">
-      <div class="shell"><div class="island"></div>
+      <div class="shell">
         <div class="screen" id="screen">
           <div class="status" aria-hidden="true"><span>9:41</span><span class="ic"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.6a10 10 0 0 1 14 0z"/></svg><svg viewBox="0 0 27 12" fill="none" stroke="#000"><rect x=".5" y=".5" width="23" height="11" rx="3"/><rect x="2.5" y="2.5" width="17" height="7" rx="1.5" fill="#000" stroke="none"/><path d="M25.5 4v4" stroke-width="1.5"/></svg></span></div>
           <iframe id="frame" title="Concept preview" loading="eager"></iframe>
@@ -176,7 +175,7 @@
     var W = d.w + padX + extraW, H = d.h + padY + baseH;
     var stage = $('stage').getBoundingClientRect();
     var room = innerWidth < 860 ? 16 : 48;
-    var s = Math.min((stage.width - room) / W, (stage.height - room - (innerWidth < 860 ? 0 : 36)) / H, 1);
+    var s = Math.min((stage.width - room) / W, (stage.height - room - (innerWidth < 860 ? 0 : 60)) / H, 1);
     fit.style.width = Math.floor(W * s) + 'px';
     fit.style.height = Math.floor(H * s) + 'px';
     device.style.transform = 'translate(' + (extraW / 2) * s + 'px,0) scale(' + s + ')';
@@ -192,7 +191,7 @@
     $('screen').style.width = d.w + 'px';
     $('screen').style.height = d.h + 'px';
     // Phones show a status bar above the page, so the page itself gets the rest of the screen
-    var statusH = dev === 'mobile' ? 50 : 0;
+    var statusH = dev === 'mobile' ? 38 : 0;
     frame.width = d.w; frame.height = d.h - statusH;
     var src = '/designs/' + c.slug + '/?embed=1';
     if (frame.getAttribute('src') !== src || changedPage) { loading.classList.remove('off'); frame.setAttribute('src', src); }
