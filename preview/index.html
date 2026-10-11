@@ -150,7 +150,11 @@
   // Start from the URL (?c=05&d=tablet), else sensible defaults
   var q = new URLSearchParams(location.search);
   var idx = Math.max(0, C.findIndex(function (c) { return c.slug.slice(0, 2) === (q.get('c') || '').padStart(2, '0') || c.short === q.get('c'); }));
-  var dev = DEVICES[q.get('d')] ? q.get('d') : (innerWidth < 700 ? 'mobile' : 'laptop');
+  // On a laptop or desktop screen, "Laptop" means the real page at full size, not a shrunken frame
+  var BIG = innerWidth >= 1024;
+  function fullPage(i) { return '/designs/' + C[i].slug + '/'; }
+  var dev = DEVICES[q.get('d')] ? q.get('d') : (innerWidth < 700 ? 'mobile' : BIG ? 'tablet' : 'laptop');
+  if (dev === 'laptop' && BIG) { location.replace(fullPage(idx)); return; }
 
   function getList() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
   function paintStar() {
@@ -184,6 +188,7 @@
   function show(newIdx, newDev) {
     var changedPage = newIdx !== undefined && newIdx !== idx;
     if (newIdx !== undefined) idx = (newIdx + C.length) % C.length;
+    if (newDev === 'laptop' && BIG) { location.href = fullPage(idx); return; }
     if (newDev) dev = newDev;
     var c = C[idx], d = DEVICES[dev];
     sel.value = String(idx);
@@ -196,7 +201,7 @@
     var src = '/designs/' + c.slug + '/?embed=1';
     if (frame.getAttribute('src') !== src || changedPage) { loading.classList.remove('off'); frame.setAttribute('src', src); }
     frame.title = c.type + ' — ' + c.style + ' on ' + d.name;
-    $('open').href = '/designs/' + c.slug + '/';
+    $('open').href = fullPage(idx);
     $('meta').innerHTML = '<b>' + c.type + '</b> · ' + c.motion + (c.why ? ' · ★ Recommended' : '');
     document.querySelectorAll('[data-d]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.d === dev); });
     document.title = c.type + ' — ' + c.style + ' · ' + d.name + ' · Team K preview';
@@ -222,6 +227,7 @@
     else if (e.key === '2') show(undefined, 'tablet');
     else if (e.key === '3') show(undefined, 'mobile');
   });
+  if (BIG) document.querySelector('[data-d="laptop"]').title = 'Laptop: open the full page (1)';
   window.addEventListener('resize', layout);
   window.addEventListener('storage', function (e) { if (e.key === KEY) paintStar(); });
   show(idx, dev);
